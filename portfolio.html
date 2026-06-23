@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio &amp; Gallery | Arun Sareen Photography</title>
+<meta name="description" content="Browse the full Arun Sareen Photography portfolio — weddings, pre-wedding shoots, bridal portraits, family and maternity sessions, events, and brand &amp; product photography.">
+<meta name="keywords" content="photography portfolio, wedding photography gallery, bridal portrait gallery, brand photography portfolio, Arun Sareen Photography">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.arunsareenphotography.com/portfolio.html">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.arunsareenphotography.com/portfolio.html">
+<meta property="og:title" content="Portfolio & Gallery | Arun Sareen Photography">
+<meta property="og:description" content="Browse weddings, portraits, family sessions, events and brand campaigns from the Arun Sareen Photography portfolio.">
+<meta property="og:image" content="https://www.arunsareenphotography.com/og-image.jpg">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio & Gallery | Arun Sareen Photography">
+<meta name="twitter:description" content="Browse weddings, portraits, family sessions, events and brand campaigns from the Arun Sareen Photography portfolio.">
+<meta name="twitter:image" content="https://www.arunsareenphotography.com/og-image.jpg">
+
+<!-- Favicon (replace with real files — see SETUP-GUIDE) -->
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+
+<!-- Structured Data: ImageGallery -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Arun Sareen Photography — Portfolio",
+  "url": "https://www.arunsareenphotography.com/portfolio.html",
+  "author": {
+    "@type": "Photographer",
+    "name": "Arun Sareen Photography"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ================= PRELOADER ================= -->
+<div class="preloader" id="preloader">
+  <div class="preloader-mark">
+    <span class="frame-corner tl"></span>
+    <span class="frame-corner tr"></span>
+    <span class="frame-corner bl"></span>
+    <span class="frame-corner br"></span>
+    <div class="preloader-text">SAREEN PHOTOGRAPHY</div>
+  </div>
+</div>
+
+<!-- ================= INQUIRY POPUP MODAL ================= -->
+<div class="inquiry-modal" id="inquiryModal">
+  <div class="inquiry-overlay" id="inquiryOverlay"></div>
+  <div class="inquiry-box">
+    <button class="inquiry-close" id="inquiryClose" aria-label="Close inquiry form">&times;</button>
+    <div class="inquiry-media">
+      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=900&auto=format&fit=crop" alt="Wedding ceremony moment">
+      <div class="inquiry-media-overlay"></div>
+      <div class="inquiry-media-text">
+        <p class="eyebrow">Arun Sareen Photography</p>
+        <h3>Let's Capture Your Story</h3>
+        <p>Quick inquiry, fast reply — we'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+    <div class="inquiry-form-side">
+      <h3>Quick Inquiry</h3>
+      <form class="contact-form" id="popupForm" action="https://formspree.io/f/mqevawjj" method="POST">
+        <input type="hidden" name="_subject" value="New Booking Inquiry — Arun Sareen Photography (Popup)">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="form-group">
+          <label for="pfname">Full Name</label>
+          <input type="text" id="pfname" name="fname" required placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="pfphone">Phone or WhatsApp</label>
+          <input type="tel" id="pfphone" name="fphone" required placeholder="+91 00000 00000">
+        </div>
+        <div class="form-group">
+          <label for="pfservice">I'm Interested In</label>
+          <select id="pfservice" name="fservice">
+            <option>Wedding Photography</option>
+            <option>Pre-Wedding Photography</option>
+            <option>Engagement Shoot</option>
+            <option>Bridal Portraits</option>
+            <option>Family Photography</option>
+            <option>Baby &amp; Maternity Photography</option>
+            <option>Event Photography</option>
+            <option>Corporate Photography</option>
+            <option>Brand &amp; Product Photography</option>
+            <option>Commercial Photography</option>
+            <option>Videography &amp; Cinematic Films</option>
+            <option>Photo Editing &amp; Retouching</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-gold full-width">Send Inquiry</button>
+        <p class="form-success" id="popupFormSuccess">Thank you! We'll be in touch within 24 hours.</p>
+      </form>
+      <button class="inquiry-skip" id="inquirySkip">Maybe later, just let me browse</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HEADER / NAV ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">AS</span>
+      <span class="logo-text">Arun Sareen <em>Photography</em></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#contact" class="nav-cta">Book a Shoot</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= PAGE HERO ================= -->
+<section class="page-hero">
+  <div class="page-hero-media">
+    <img src="images/hero-background 1.jpg" alt="Bridal portrait with traditional jewelry">
+    <div class="page-hero-overlay"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="page-hero-content">
+    <p class="eyebrow" data-aos>Selected Work</p>
+    <h1 data-aos>Portfolio<br><span class="italic">&amp; Gallery</span></h1>
+    <p class="page-hero-sub" data-aos>A complete look at the weddings, portraits, brand campaigns and films we've had the privilege to create.</p>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO STATS ================= -->
+<section class="stats-strip">
+  <div class="container stats-grid">
+    <div class="stat-item" data-aos>
+      <span class="stat-num">2000+</span>
+      <span class="stat-label">Shoots Delivered</span>
+    </div>
+    <div class="stat-item" data-aos>
+      <span class="stat-num">180+</span>
+      <span class="stat-label">Weddings Captured</span>
+    </div>
+    <div class="stat-item" data-aos>
+      <span class="stat-num">50+</span>
+      <span class="stat-label">Brand Campaigns</span>
+    </div>
+    <div class="stat-item" data-aos>
+      <span class="stat-num">10+</span>
+      <span class="stat-label">Cities Shot In</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FULL GALLERY ================= -->
+<section class="portfolio portfolio-page">
+  <div class="container">
+    <p class="eyebrow center" data-aos>Browse By Category</p>
+    <h2 class="section-title center" data-aos>The Full Collection</h2>
+    <p class="section-sub center" data-aos>Filter by category to explore the work most relevant to your project, or browse it all.</p>
+
+    <div class="filter-bar" data-aos>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="wedding">Weddings</button>
+      <button class="filter-btn" data-filter="prewedding">Pre-Wedding</button>
+      <button class="filter-btn" data-filter="portrait">Portraits</button>
+      <button class="filter-btn" data-filter="family">Family &amp; Baby</button>
+      <button class="filter-btn" data-filter="event">Events</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <figure class="gallery-item" data-cat="wedding">
+        <img src="images/p2.webp" alt="Wedding ceremony moment">
+      </figure>
+      <figure class="gallery-item" data-cat="prewedding">
+        <img src="images/p4.webp" alt="Pre-wedding couple shoot outdoors">
+      </figure>
+      <figure class="gallery-item" data-cat="portrait">
+        <img src="images/p1.webp" alt="Bridal portrait with jewelry detail">
+      </figure>
+      <figure class="gallery-item" data-cat="family">
+        <img src="images/p4.webp" alt="Family portrait session">
+      </figure>
+      <figure class="gallery-item" data-cat="family">
+        <img src="images/p3.webp" alt="Maternity photography session">
+      </figure>
+      <figure class="gallery-item" data-cat="event">
+        <img src="images/p12.webp" alt="Corporate event photography">
+      </figure>
+      <figure class="gallery-item" data-cat="brand">
+        <img src="images/p6.webp" alt="Product photography flatlay">
+      </figure>
+      <figure class="gallery-item" data-cat="wedding">
+        <img src="images/p7.webp" alt="Wedding reception dance floor">
+      </figure>
+      <figure class="gallery-item" data-cat="prewedding">
+        <img src="images/p9.webp" alt="Engagement shoot couple laughing">
+      </figure>
+      <figure class="gallery-item" data-cat="brand">
+        <img src="images/p10.webp" alt="Brand photography for fashion label">
+      </figure>
+      <figure class="gallery-item" data-cat="portrait">
+        <img src="images/p8.webp" alt="Groom portrait in traditional attire">
+      </figure>
+      <figure class="gallery-item" data-cat="event">
+        <img src="images/p11.webp" alt="Live event coverage with crowd">
+      </figure>
+      <figure class="gallery-item" data-cat="wedding">
+        <img src="images/insta-feed 1.webp" alt="Bride and groom embracing at golden hour">
+      </figure>
+      <figure class="gallery-item" data-cat="portrait">
+        <img src="images/insta-feed 2.webp" alt="Couple portrait laughing together">
+      </figure>
+      <figure class="gallery-item" data-cat="family">
+        <img src="images/insta-feed 3.webp" alt="Baby photography session">
+
+      </figure>
+      <figure class="gallery-item" data-cat="brand">
+        <img src="images/about image.webp" alt="Product photography setup with brand items">
+
+      </figure>
+      <figure class="gallery-item" data-cat="event">
+        <img src="images/insta-feed 4.webp" alt="Corporate conference event coverage">
+
+      </figure>
+      <figure class="gallery-item" data-cat="event">
+        <img src="images/insta-feed 5.webp" alt="Corporate conference event coverage">
+
+      </figure>
+      <figure class="gallery-item" data-cat="event">
+        <img src="images/insta-feed 6.webp" alt="Corporate conference event coverage">
+      </figure>
+      <figure class="gallery-item" data-cat="event">
+        <img src="images/insta-feed 7.webp" alt="Corporate conference event coverage">
+
+      </figure>
+    </div>
+
+    <!-- BEFORE / AFTER -->
+    <div class="before-after-section">
+      <p class="eyebrow center" data-aos>The Finishing Touch</p>
+      <h3 class="center" data-aos>Before &amp; After — Editing &amp; Retouching</h3>
+      <div class="ba-slider" data-aos>
+        <div class="ba-wrap" id="baWrap">
+          <img src="images/before edit.webp" alt="Before color grading and retouching" class="ba-img ba-before">
+          <img src="images/after edit.webp" alt="After color grading and retouching" class="ba-img ba-after">
+          <div class="ba-divider" id="baDivider"><span><i class="fa-solid fa-arrows-left-right"></i></span></div>
+        </div>
+        <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-range" aria-label="Drag to compare before and after">
+        <div class="ba-labels"><span>Before</span><span>After</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BANNER ================= -->
+<section class="about-cta">
+  <div class="container about-cta-inner" data-aos>
+    <h2>Liked What You Saw?</h2>
+    <p>Let's talk about your wedding, portrait session, or brand shoot — we'd love to bring the same care to your story.</p>
+    <div class="hero-actions">
+      <a href="index.html#contact" class="btn btn-gold">Book a Shoot</a>
+      <a href="index.html#services" class="btn btn-outline">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="footer-bg"></div>
+  <div class="footer-bg-overlay"></div>
+  <div class="container footer-grid" style="position:relative;z-index:2;">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">AS</span>
+        <span class="logo-text">Arun Sareen <em>Photography</em></span>
+      </a>
+      <p>Full-service photography &amp; videography studio for weddings, brands, events and life's most special moments. Available for local and destination shoots.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="about.html">About the Studio</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#testimonials">Testimonials</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="index.html#services">Wedding &amp; Pre-Wedding</a>
+      <a href="index.html#services">Family &amp; Maternity</a>
+      <a href="index.html#services">Event &amp; Corporate</a>
+      <a href="index.html#services">Brand &amp; Product</a>
+      <a href="index.html#services">Videography &amp; Editing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="index.html#contact"><i class="fa-solid fa-location-dot"></i>  K-4/14-15 Mohan gargen ,Uttam nagar New delhi</a>
+      <a href="tel:+918587862476"><i class="fa-solid fa-phone"></i> +91 85878 62476</a>
+      <a href="mailto:rajni.bakshi78@gmail.com"><i class="fa-solid fa-envelope"></i> rajni.bakshi78@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom" style="position:relative;z-index:2;">
+    <p>&copy; 2026 Arun Sareen Photography. All rights reserved.</p>
+    <div class="footer-legal"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a></div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a href="https://wa.me/918587862476?text=Hi%20Arun%20Sareen%20Photography%2C%20I'd%20like%20to%20enquire%20about%20a%20shoot." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
