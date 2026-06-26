@@ -50,13 +50,50 @@
 
 <!-- ================= PRELOADER ================= -->
 <div class="preloader" id="preloader">
-  <div class="preloader-mark">
-    <span class="frame-corner tl"></span>
-    <span class="frame-corner tr"></span>
-    <span class="frame-corner bl"></span>
-    <span class="frame-corner br"></span>
-    <div class="preloader-text">SAREEN PHOTOGRAPHY</div>
+
+  <!-- Ambient background glow -->
+  <div class="pl-glow pl-glow-1"></div>
+  <div class="pl-glow pl-glow-2"></div>
+
+  <!-- Shutter / aperture ring -->
+  <div class="pl-aperture">
+    <div class="pl-aperture-ring"></div>
+    <div class="pl-aperture-ring pl-aperture-ring-2"></div>
+    <div class="pl-aperture-blades">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
   </div>
+
+  <!-- Corner frame brackets -->
+  <div class="pl-frame">
+    <span class="pl-corner pl-tl"></span>
+    <span class="pl-corner pl-tr"></span>
+    <span class="pl-corner pl-bl"></span>
+    <span class="pl-corner pl-br"></span>
+  </div>
+
+  <!-- Center content -->
+  <div class="pl-content">
+    <div class="pl-logo-mark">AS</div>
+    <div class="pl-divider"></div>
+    <div class="pl-studio-name">ARUN SAREEN</div>
+    <div class="pl-tagline">Photography &amp; Videography</div>
+  </div>
+
+  <!-- Bottom progress bar -->
+  <div class="pl-progress-wrap">
+    <div class="pl-progress-bar" id="plProgressBar"></div>
+  </div>
+
+  <!-- Film strip bottom -->
+  <div class="pl-film-strip">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
 </div>
 
 <!-- ================= INQUIRY POPUP MODAL ================= -->
@@ -186,68 +223,68 @@
 
     <div class="gallery-grid" id="galleryGrid">
       <figure class="gallery-item" data-cat="wedding">
-        <img src="images/p2.webp" alt="Wedding ceremony moment">
+        <img src="images/p2.webp" loading="lazy" alt="Wedding ceremony moment">
       </figure>
       <figure class="gallery-item" data-cat="prewedding">
-        <img src="images/p4.webp" alt="Pre-wedding couple shoot outdoors">
+        <img src="images/p4.webp" loading="lazy" alt="Pre-wedding couple shoot outdoors">
       </figure>
       <figure class="gallery-item" data-cat="portrait">
-        <img src="images/p1.webp" alt="Bridal portrait with jewelry detail">
+        <img src="images/p1.webp" loading="lazy" alt="Bridal portrait with jewelry detail">
       </figure>
       <figure class="gallery-item" data-cat="family">
-        <img src="images/p4.webp" alt="Family portrait session">
+        <img src="images/p4.webp" loading="lazy" alt="Family portrait session">
       </figure>
       <figure class="gallery-item" data-cat="family">
-        <img src="images/p3.webp" alt="Maternity photography session">
+        <img src="images/p3.webp" loading="lazy" alt="Maternity photography session">
       </figure>
       <figure class="gallery-item" data-cat="event">
-        <img src="images/p12.webp" alt="Corporate event photography">
+        <img src="images/p12.webp" loading="lazy" alt="Corporate event photography">
       </figure>
       <figure class="gallery-item" data-cat="brand">
-        <img src="images/p6.webp" alt="Product photography flatlay">
+        <img src="images/p6.webp" loading="lazy" alt="Product photography flatlay">
       </figure>
       <figure class="gallery-item" data-cat="wedding">
-        <img src="images/p7.webp" alt="Wedding reception dance floor">
+        <img src="images/p7.webp" loading="lazy" alt="Wedding reception dance floor">
       </figure>
       <figure class="gallery-item" data-cat="prewedding">
-        <img src="images/p9.webp" alt="Engagement shoot couple laughing">
+        <img src="images/p9.webp" loading="lazy" alt="Engagement shoot couple laughing">
       </figure>
       <figure class="gallery-item" data-cat="brand">
-        <img src="images/p10.webp" alt="Brand photography for fashion label">
+        <img src="images/p10.webp" loading="lazy" alt="Brand photography for fashion label">
       </figure>
       <figure class="gallery-item" data-cat="portrait">
-        <img src="images/p8.webp" alt="Groom portrait in traditional attire">
+        <img src="images/p8.webp" loading="lazy" alt="Groom portrait in traditional attire">
       </figure>
       <figure class="gallery-item" data-cat="event">
-        <img src="images/p11.webp" alt="Live event coverage with crowd">
+        <img src="images/p11.webp" loading="lazy" alt="Live event coverage with crowd">
       </figure>
       <figure class="gallery-item" data-cat="wedding">
-        <img src="images/insta-feed 1.webp" alt="Bride and groom embracing at golden hour">
+        <img src="images/insta-feed 1.webp" loading="lazy" alt="Bride and groom embracing at golden hour">
       </figure>
       <figure class="gallery-item" data-cat="portrait">
-        <img src="images/insta-feed 2.webp" alt="Couple portrait laughing together">
+        <img src="images/insta-feed 2.webp" loading="lazy" alt="Couple portrait laughing together">
       </figure>
       <figure class="gallery-item" data-cat="family">
-        <img src="images/insta-feed 3.webp" alt="Baby photography session">
+        <img src="images/insta-feed 3.webp" loading="lazy" alt="Baby photography session">
 
       </figure>
       <figure class="gallery-item" data-cat="brand">
-        <img src="images/about image.webp" alt="Product photography setup with brand items">
+        <img src="images/about image.webp" loading="lazy" alt="Product photography setup with brand items">
 
       </figure>
       <figure class="gallery-item" data-cat="event">
-        <img src="images/insta-feed 4.webp" alt="Corporate conference event coverage">
+        <img src="images/insta-feed 4.webp" loading="lazy" alt="Corporate conference event coverage">
 
       </figure>
       <figure class="gallery-item" data-cat="event">
-        <img src="images/insta-feed 5.webp" alt="Corporate conference event coverage">
+        <img src="images/insta-feed 5.webp" loading="lazy" alt="Corporate conference event coverage">
 
       </figure>
       <figure class="gallery-item" data-cat="event">
-        <img src="images/insta-feed 6.webp" alt="Corporate conference event coverage">
+        <img src="images/insta-feed 6.webp" loading="lazy" alt="Corporate conference event coverage">
       </figure>
       <figure class="gallery-item" data-cat="event">
-        <img src="images/insta-feed 7.webp" alt="Corporate conference event coverage">
+        <img src="images/insta-feed 7.webp" loading="lazy" alt="Corporate conference event coverage">
 
       </figure>
     </div>
@@ -258,8 +295,8 @@
       <h3 class="center" data-aos>Before &amp; After — Editing &amp; Retouching</h3>
       <div class="ba-slider" data-aos>
         <div class="ba-wrap" id="baWrap">
-          <img src="images/before edit.webp" alt="Before color grading and retouching" class="ba-img ba-before">
-          <img src="images/after edit.webp" alt="After color grading and retouching" class="ba-img ba-after">
+          <img src="images/before edit.webp" loading="lazy" alt="Before color grading and retouching" class="ba-img ba-before">
+          <img src="images/after edit.webp" loading="lazy" alt="After color grading and retouching" class="ba-img ba-after">
           <div class="ba-divider" id="baDivider"><span><i class="fa-solid fa-arrows-left-right"></i></span></div>
         </div>
         <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-range" aria-label="Drag to compare before and after">
