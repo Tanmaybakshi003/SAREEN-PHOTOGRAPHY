@@ -91,13 +91,50 @@
 
 <!-- ================= PRELOADER ================= -->
 <div class="preloader" id="preloader">
-  <div class="preloader-mark">
-    <span class="frame-corner tl"></span>
-    <span class="frame-corner tr"></span>
-    <span class="frame-corner bl"></span>
-    <span class="frame-corner br"></span>
-    <div class="preloader-text">SAREEN PHOTOGRAPHY</div>
+
+  <!-- Ambient background glow -->
+  <div class="pl-glow pl-glow-1"></div>
+  <div class="pl-glow pl-glow-2"></div>
+
+  <!-- Shutter / aperture ring -->
+  <div class="pl-aperture">
+    <div class="pl-aperture-ring"></div>
+    <div class="pl-aperture-ring pl-aperture-ring-2"></div>
+    <div class="pl-aperture-blades">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
   </div>
+
+  <!-- Corner frame brackets -->
+  <div class="pl-frame">
+    <span class="pl-corner pl-tl"></span>
+    <span class="pl-corner pl-tr"></span>
+    <span class="pl-corner pl-bl"></span>
+    <span class="pl-corner pl-br"></span>
+  </div>
+
+  <!-- Center content -->
+  <div class="pl-content">
+    <div class="pl-logo-mark">AS</div>
+    <div class="pl-divider"></div>
+    <div class="pl-studio-name">ARUN SAREEN</div>
+    <div class="pl-tagline">Photography &amp; Videography</div>
+  </div>
+
+  <!-- Bottom progress bar -->
+  <div class="pl-progress-wrap">
+    <div class="pl-progress-bar" id="plProgressBar"></div>
+  </div>
+
+  <!-- Film strip bottom -->
+  <div class="pl-film-strip">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
 </div>
 
 <!-- ================= INQUIRY POPUP MODAL ================= -->
@@ -154,6 +191,7 @@
 </div>
 
 <!-- ================= HEADER / NAV ================= -->
+ 
 <header class="site-header" id="siteHeader">
   <div class="nav-wrap">
     <a href="#home" class="logo">
@@ -161,13 +199,37 @@
       <span class="logo-text">Arun Sareen <em>Photography</em></span>
     </a>
     <nav class="main-nav" id="mainNav">
-      <a href="#home">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="#services">Services</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact" class="nav-cta">Book a Shoot</a>
-    </nav>
+
+  <!-- Top brand strip -->
+  <div class="nav-top-bar">
+    <div class="nav-brand-mini">
+      <span class="logo-mark">AS</span>
+      <span class="logo-text">Arun Sareen <em>Photography</em></span>
+    </div>
+  </div>
+
+  <!-- Main links -->
+  <div class="nav-links-group">
+    <a href="#home">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="#services">Services</a>
+    <a href="#contact" class="nav-cta">Book a Shoot</a>
+  </div>
+
+  <!-- Bottom contact + social -->
+  <div class="nav-bottom-strip">
+    <p>Get in touch</p>
+    <a href="tel:+918587862476"><i class="fa-solid fa-phone"></i> +91 85878 62476</a>
+    <div class="nav-social-row">
+      <a href="https://www.instagram.com/arunsareenphotography" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+
+</nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
@@ -214,7 +276,7 @@
 <section class="about" id="about">
   <div class="container about-grid">
     <div class="about-media" data-aos>
-      <img src="images/about image.webp" alt="Arun Sareen, founder photographer, working on location">
+      <img src="images/about image.webp" loading="lazy" alt="Arun Sareen, founder photographer, working on location">
       <div class="about-badge">
         <span class="badge-num">30+</span>
         <span class="badge-label">Years of<br>Storytelling</span>
@@ -270,51 +332,51 @@
 
     <div class="gallery-grid" id="galleryGrid">
       <figure class="gallery-item" data-cat="wedding">
-        <img src="images/p2.webp" alt="Wedding ceremony moment">
-        <figcaption><span>Wedding</span><h4>The Ceremony/h4></figcaption>
+        <img src="images/p2.webp" loading="lazy" alt="Wedding ceremony moment">
+        <figcaption><span>Wedding</span><h4>The Ceremony</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="prewedding">
-        <img src="images/p4.webp" alt="Pre-wedding couple shoot outdoors">
+        <img src="images/p4.webp" loading="lazy" alt="Pre-wedding couple shoot outdoors">
         <figcaption><span>Pre-Wedding</span><h4>Sahil &amp; Meher, Goa</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="portrait">
-        <img src="images/p1.webp" alt="Bridal portrait with jewelry detail">
+        <img src="images/p1.webp" loading="lazy" alt="Bridal portrait with jewelry detail">
         <figcaption><span>Bridal Portrait</span><h4>The Bride in Gold</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="family">
-        <img src="images/p3.webp" alt="Family portrait session">
+        <img src="images/p3.webp" loading="lazy" alt="Family portrait session">
         <figcaption><span>Family</span><h4>The Mehta Family</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="family">
-        <img src="images/p12.webp" alt="Maternity photography session">
+        <img src="images/p12.webp" loading="lazy" alt="Maternity photography session">
         <figcaption><span>Maternity</span><h4>Awaiting Aarav</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="event">
-        <img src="images/p6.webp" alt="Corporate event photography">
+        <img src="images/p6.webp" loading="lazy" alt="Corporate event photography">
         <figcaption><span>Event</span><h4>Annual Leadership Summit</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="brand">
-        <img src="images/p7.webp" alt="Product photography flatlay">
+        <img src="images/p7.webp" loading="lazy" alt="Product photography flatlay">
         <figcaption><span>Product</span><h4>Lumière Skincare Campaign</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="wedding">
-        <img src="images/p9.webp" alt="Wedding reception dance floor">
+        <img src="images/p9.webp" loading="lazy" alt="Wedding reception dance floor">
         <figcaption><span>Wedding</span><h4>First Dance, Jaipur</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="prewedding">
-        <img src="images/p10.webp" alt="Engagement shoot couple laughing">
+        <img src="images/p10.webp" loading="lazy" alt="Engagement shoot couple laughing">
         <figcaption><span>Engagement</span><h4>Rhea &amp; Karan</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="brand">
-        <img src="images/p8.webp" alt="Brand photography for fashion label">
+        <img src="images/p8.webp" loading="lazy" alt="Brand photography for fashion label">
         <figcaption><span>Brand</span><h4>Studio Veer Lookbook</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="portrait">
-        <img src="images/p11.webp" alt="Groom portrait in traditional attire">
+        <img src="images/p11.webp" loading="lazy" alt="Groom portrait in traditional attire">
         <figcaption><span>Portrait</span><h4>The Groom's Moment</h4></figcaption>
       </figure>
       <figure class="gallery-item" data-cat="event">
-        <img src="images/hero-background 1.jpg" alt="Live event coverage with crowd">
+        <img src="images/hero-background 1.jpg" loading="lazy" alt="Live event coverage with crowd">
         <figcaption><span>Event</span><h4>Live Performance Coverage</h4></figcaption>
       </figure>
     </div>
@@ -325,17 +387,13 @@
       <h3 class="center" data-aos>Before &amp; After — Editing &amp; Retouching</h3>
       <div class="ba-slider" data-aos>
         <div class="ba-wrap" id="baWrap">
-          <img src="images/before edit.webp" alt="Before color grading and retouching" class="ba-img ba-before">
-          <img src="images/after edit.webp" alt="After color grading and retouching" class="ba-img ba-after">
+          <img src="images/before edit.webp" loading="lazy" alt="Before color grading and retouching" class="ba-img ba-before">
+          <img src="images/after edit.webp" loading="lazy" alt="After color grading and retouching" class="ba-img ba-after">
           <div class="ba-divider" id="baDivider"><span><i class="fa-solid fa-arrows-left-right"></i></span></div>
         </div>
         <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-range" aria-label="Drag to compare before and after">
         <div class="ba-labels"><span>Before</span><span>After</span></div>
       </div>
-    </div>
-
-    <div class="center" style="margin-top:48px;">
-      <a href="#" class="btn btn-outline">View Full Gallery</a>
     </div>
   </div>
 </section>
@@ -557,7 +615,67 @@
           </div>
         </div>
       </div>
+    </div><!-- MOBILE GLASS SWIPER -->
+<div class="testimonials-mobile-swiper" id="tmsMobile">
+  <div class="tms-stack" id="tmsStack">
+
+    <div class="tms-card" data-pos="0">
+      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p class="tms-quote">"Arun and his team made our wedding feel effortless. Every emotional moment was captured without us even noticing the camera. The film still makes us cry happy tears."</p>
+      <div class="tms-person">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=120&auto=format&fit=crop" alt="Priya">
+        <div><h4>Priya &amp; Rohan</h4><span>Wedding, Udaipur</span></div>
+      </div>
     </div>
+
+    <div class="tms-card" data-pos="1">
+      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p class="tms-quote">"The wedding film brought our families to tears at the reception screening. Months later we still rewatch it together on quiet evenings."</p>
+      <div class="tms-person">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=120&auto=format&fit=crop" alt="Aditya">
+        <div><h4>Aditya Rao</h4><span>Wedding Film, Jaipur</span></div>
+      </div>
+    </div>
+
+    <div class="tms-card" data-pos="2">
+      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p class="tms-quote">"Our maternity shoot was so comfortable and fun — the photos are now framed across our home. Arun has such a calming presence behind the camera."</p>
+      <div class="tms-person">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=120&auto=format&fit=crop" alt="Neha">
+        <div><h4>Neha &amp; Vikram</h4><span>Maternity Session</span></div>
+      </div>
+    </div>
+
+    <div class="tms-card" data-pos="3">
+      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p class="tms-quote">"We hired the studio for our skincare brand's product shoot and the images alone increased our click-through rate. Professional, punctual and incredibly creative."</p>
+      <div class="tms-person">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=120&auto=format&fit=crop" alt="Ananya">
+        <div><h4>Ananya Kapoor</h4><span>Brand Photography</span></div>
+      </div>
+    </div>
+
+    <div class="tms-card" data-pos="4">
+      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p class="tms-quote">"Flying the team out to Goa for our wedding was the best decision we made. They captured details we didn't even know were happening."</p>
+      <div class="tms-person">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=120&auto=format&fit=crop" alt="Aman">
+        <div><h4>Aman Kumar</h4><span>Destination Wedding, Goa</span></div>
+      </div>
+    </div>
+
+    <div class="tms-card" data-pos="5">
+      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p class="tms-quote">"Our family shoot felt completely unposed, yet every frame turned out beautifully composed. Highly recommend for anyone with young kids."</p>
+      <div class="tms-person">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=120&auto=format&fit=crop" alt="Vikram">
+        <div><h4>Vikram</h4><span>Family Session</span></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="tms-dots" id="tmsDots"></div>
+</div>
   </div>
 </section>
 
@@ -753,7 +871,7 @@
     <div class="footer-col">
       <h4>Get in Touch</h4>
       <a href="#contact"><i class="fa-solid fa-location-dot"></i>  K-4/14-15 Mohan gargen ,Uttam nagar New delhi</a>
-      <a href="tel:+9185878 62476"><i class="fa-solid fa-phone"></i> +91  85878 62476</a>
+      <a href="tel:+9185878 62476"><i class="fa-solid fa-phone"></i> +91 85878 62476</a>
       <a href="mailto:rajni.bakshi78@gmail.com"><i class="fa-solid fa-envelope"></i> rajni.bakshi78@gmail.com</a>
     </div>
   </div>
