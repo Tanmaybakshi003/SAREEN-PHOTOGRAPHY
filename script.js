@@ -12,28 +12,54 @@ document.addEventListener('DOMContentLoaded', () => {
   // fallback in case load event already fired
   setTimeout(() => preloader.classList.add('hidden'), 1800);
 
-  /* ---------- HEADER ON SCROLL ---------- */
+ /* ---------- HEADER ON SCROLL ---------- */
   const header = document.getElementById('siteHeader');
+  let scrollScheduled = false;
   const onScroll = () => {
-    if (window.scrollY > 60) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
+    header.classList.toggle('scrolled', window.scrollY > 60);
+    scrollScheduled = false;
   };
-  window.addEventListener('scroll', onScroll);
+  window.addEventListener('scroll', () => {
+    if (!scrollScheduled) {
+      scrollScheduled = true;
+      requestAnimationFrame(onScroll);
+    }
+  });
   onScroll();
 
-  /* ---------- MOBILE NAV TOGGLE ---------- */
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.getElementById('mainNav');
+ /* ---------- MOBILE NAV TOGGLE ---------- */
+const navToggle = document.getElementById('navToggle');
+const mainNav = document.getElementById('mainNav');
+const navOverlay = document.getElementById('navOverlay');
+
+if (navToggle && mainNav) {
+  const closeNav = () => {
+    navToggle.classList.remove('open');
+    mainNav.classList.remove('open');
+    if (navOverlay) navOverlay.classList.remove('show');
+    document.body.style.overflow = '';
+  };
+
   navToggle.addEventListener('click', () => {
+    const isOpening = !mainNav.classList.contains('open');
     navToggle.classList.toggle('open');
     mainNav.classList.toggle('open');
+    if (navOverlay) navOverlay.classList.toggle('show');
+    document.body.style.overflow = isOpening ? 'hidden' : '';
   });
+
   mainNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('open');
-      mainNav.classList.remove('open');
-    });
+    link.addEventListener('click', closeNav);
   });
+
+  if (navOverlay) {
+    navOverlay.addEventListener('click', closeNav);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mainNav.classList.contains('open')) closeNav();
+  });
+}
 
   /* ---------- HERO SLIDESHOW ---------- */
   const heroImgs = document.querySelectorAll('[data-hero]');
@@ -137,39 +163,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- INQUIRY POPUP MODAL ---------- */
-  const inquiryModal = document.getElementById('inquiryModal');
-  if (inquiryModal) {
-    const inquiryOverlay = document.getElementById('inquiryOverlay');
-    const inquiryClose = document.getElementById('inquiryClose');
-    const inquirySkip = document.getElementById('inquirySkip');
-    const STORAGE_KEY = 'asp_inquiry_dismissed_v2';
+const inquiryModal = document.getElementById('inquiryModal');
+if (inquiryModal) {
+  const inquiryOverlay = document.getElementById('inquiryOverlay');
+  const inquiryClose = document.getElementById('inquiryClose');
+  const inquirySkip = document.getElementById('inquirySkip');
 
-    const openModal = () => {
-      inquiryModal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    };
-    const closeModal = () => {
-      inquiryModal.classList.remove('show');
-      document.body.style.overflow = '';
-      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* storage unavailable */ }
-    };
+  const openModal = () => {
+    inquiryModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  };
 
-    let alreadyDismissed = false;
-    try { alreadyDismissed = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) { /* storage unavailable */ }
+  const closeModal = () => {
+    inquiryModal.classList.remove('show');
+    document.body.style.overflow = '';
+  };
 
-    if (!alreadyDismissed) {
-      // Show 3 seconds after the page opens
-      setTimeout(openModal, 3000);
+  // Show 3s after page load
+  setTimeout(openModal, 3000);
+
+  // Show again every 2 minutes after closing
+  let repeatTimer = null;
+
+  const scheduleRepeat = () => {
+    clearTimeout(repeatTimer);
+    repeatTimer = setTimeout(() => {
+      // Only reopen if user isn't already looking at it
+      if (!inquiryModal.classList.contains('show')) {
+        openModal();
+      }
+    }, 2 * 60 * 1000); // 2 minutes 
+  };
+
+  inquiryOverlay.addEventListener('click', () => { closeModal(); scheduleRepeat(); });
+  inquiryClose.addEventListener('click', () => { closeModal(); scheduleRepeat(); });
+  inquirySkip.addEventListener('click', () => { closeModal(); scheduleRepeat(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && inquiryModal.classList.contains('show')) {
+      closeModal();
+      scheduleRepeat();
     }
-
-    inquiryOverlay.addEventListener('click', closeModal);
-    inquiryClose.addEventListener('click', closeModal);
-    inquirySkip.addEventListener('click', closeModal);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && inquiryModal.classList.contains('show')) closeModal();
-    });
-  }
-
+  });
+}
   /* ---------- BOOKING FORM(S) ---------- */
   const handleFormSubmit = (form, successEl) => {
     form.addEventListener('submit', async (e) => {
@@ -281,8 +317,10 @@ if (instaMarquee) {
   handleBreakpoint(mediaQuery);
 }
 /* ---------- PORTFOLIO MOBILE LIMIT ---------- */
+/* ---------- PORTFOLIO MOBILE LIMIT ---------- */
 const galleryGrid = document.getElementById('galleryGrid');
-if (galleryGrid) {
+const isFullPortfolioPage = !!document.querySelector('.portfolio-page');
+if (galleryGrid && !isFullPortfolioPage) {
   // Create mobile "View Full Portfolio" button
   const portfolioMobileBtn = document.createElement('a');
   portfolioMobileBtn.href = 'portfolio.html';
@@ -379,9 +417,11 @@ if (tmsStack && tmsDots) {
     updateDots();
   };
 
-  // Auto-advance every 4s
-  let autoTimer = setInterval(() => goTo(current + 1), 4000);
-  const resetTimer = () => { clearInterval(autoTimer); autoTimer = setInterval(() => goTo(current + 1), 4000); };
+  // Auto-advance every 4s — only while this section is on screen
+  let autoTimer = null;
+  const startAuto = () => { autoTimer = setInterval(() => goTo(current + 1), 4000); };
+  const stopAuto = () => { clearInterval(autoTimer); autoTimer = null; };
+  const resetTimer = () => { stopAuto(); startAuto(); };
 
   // Drag / swipe on top card
   let dragStartX = null;
@@ -410,12 +450,25 @@ if (tmsStack && tmsDots) {
   tmsStack.addEventListener('mousedown', (e) => onDragStart(e.clientX, e.clientY));
   window.addEventListener('mouseup', (e) => onDragEnd(e.clientX));
 
-  // Touch
+ // Touch
   tmsStack.addEventListener('touchstart', (e) => {
     onDragStart(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: true });
   tmsStack.addEventListener('touchend', (e) => {
     onDragEnd(e.changedTouches[0].clientX);
   });
+
+  /* ---------- PAUSE TESTIMONIALS WHEN OFF-SCREEN ---------- */
+  const testimonialsSection = document.getElementById('testimonials');
+  const columnsWrap = document.querySelector('.testimonials-columns-wrap');
+  if (testimonialsSection) {
+    const testimonialsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (columnsWrap) columnsWrap.classList.toggle('paused', !entry.isIntersecting);
+        entry.isIntersecting ? startAuto() : stopAuto();
+      });
+    }, { threshold: 0.1 });
+    testimonialsObserver.observe(testimonialsSection);
+  }
 }
 });
