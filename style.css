@@ -489,6 +489,19 @@ h4 { font-size: 1.15rem; font-weight: 600; font-family: var(--font-body); color:
   cursor: pointer;
   padding: 8px;
 }
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 21, 16, 0.6);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.nav-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
 .nav-toggle span {
   display: block;
   width: 26px;
@@ -1071,11 +1084,6 @@ h4 { font-size: 1.15rem; font-weight: 600; font-family: var(--font-body); color:
   border-color: var(--forest);
   color: var(--ivory);
 }
-.gallery-item img{
-will-change:transform;
-transform:translateZ(0);
-backface-visibility:hidden;
-}
 
 .gallery-grid {
   display: grid;
@@ -1250,6 +1258,40 @@ backface-visibility:hidden;
   color: var(--text-muted);
   margin-top: 8px;
 }
+/* ===================== PORTFOLIO PAGE — EDITORIAL MOSAIC GALLERY ===================== */
+.portfolio-page .gallery-grid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: clamp(160px, 19vw, 230px);
+  grid-auto-flow: dense;
+}
+.portfolio-page .gallery-item {
+  aspect-ratio: auto;
+  grid-row: span 2;
+}
+.portfolio-page .gallery-item.feature {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.portfolio-page .gallery-item figcaption {
+  padding: 20px;
+}
+.portfolio-page .gallery-item figcaption span {
+  font-size: 0.66rem;
+}
+.portfolio-page .gallery-item figcaption h4 {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 860px) {
+  .portfolio-page .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: clamp(150px, 38vw, 200px);
+  }
+  .portfolio-page .gallery-item.feature {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
 
 /* ===================== SERVICES ===================== */
 .services {
@@ -1263,7 +1305,7 @@ backface-visibility:hidden;
   background-image: url('images/services-background.webp');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: 0;
 }
 .services-bg-overlay {
@@ -1401,6 +1443,7 @@ backface-visibility:hidden;
   animation-iteration-count: infinite;
 }
 .testimonial-column:hover { animation-play-state: paused; }
+.testimonials-columns-wrap.paused .testimonial-column { animation-play-state: paused; }
 
 @keyframes testimonialScroll {
   0%   { transform: translateY(0); }
@@ -1486,7 +1529,7 @@ backface-visibility:hidden;
   background-image: url('images/services-background.webp');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: 0;
 }
 .insta-feed-overlay {
@@ -1697,7 +1740,7 @@ backface-visibility:hidden;
   background-image: url('images/services-background.webp');
   background-size: cover;
   background-position: center top;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: 0;
 }
 .footer-bg-overlay {
@@ -1754,7 +1797,7 @@ backface-visibility:hidden;
 .footer-legal { display: flex; gap: 24px; }
 .footer-legal a:hover { color: var(--gold-light); }
 
-/* ===================== WHATSAPP FLOAT ===================== */
+/* =====================  PP FLOAT ===================== */
 .whatsapp-float {
   position: fixed;
   bottom: 28px;
@@ -1773,10 +1816,13 @@ backface-visibility:hidden;
   transition: var(--transition);
   animation: floatPulse 3s ease infinite;
 }
-.whatsapp-float:hover { transform: scale(1.08); }
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  animation-play-state: paused;
+}
 @keyframes floatPulse {
-  0%, 100% { box-shadow: 0 10px 30px -10px rgba(37,211,102,0.5); }
-  50% { box-shadow: 0 10px 40px -5px rgba(37,211,102,0.8); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
 }
 
 /* ===================== INNER PAGE HERO (reusable) ===================== */
@@ -1819,6 +1865,48 @@ backface-visibility:hidden;
   gap: 32px;
   text-align: center;
 }
+/* ===================== ABOUT — FIELD STRIP & PROCESS BANNER ===================== */
+.field-strip { padding: 90px 0 0; background: var(--ivory); }
+.field-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.field-strip-grid figure {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.field-strip-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22,1,0.36,1);
+}
+.field-strip-grid figure:hover img { transform: scale(1.05); }
+
+.process-banner {
+  width: 100%;
+  height: 46vh;
+  min-height: 280px;
+  max-height: 420px;
+  overflow: hidden;
+}
+.process-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 860px) {
+  .field-strip-grid { gap: 10px; }
+  .field-strip-grid figure { aspect-ratio: 1/1; }
+  .process-banner { height: 36vh; min-height: 220px; }
+}
+
+@media (max-width: 560px) {
+  .field-strip { padding-top: 60px; }
+}
 .stat-item { display: flex; flex-direction: column; gap: 8px; }
 .stat-num {
   font-family: var(--font-display);
@@ -1843,7 +1931,7 @@ backface-visibility:hidden;
   background-image: url('images/services-background.webp');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: 0;
 }
 .philosophy-bg-overlay {
@@ -2239,16 +2327,18 @@ backface-visibility:hidden;
     z-index: 3;
   }
   .tms-card[data-pos="3"],
-  .tms-card[data-pos="4"],
-  .tms-card[data-pos="5"],
-  .tms-card[data-pos="6"],
-  .tms-card[data-pos="7"],
-  .tms-card[data-pos="8"] {
-    transform: translateY(40px) scale(0.84);
-    opacity: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
+.tms-card[data-pos="4"],
+.tms-card[data-pos="5"],
+.tms-card[data-pos="6"],
+.tms-card[data-pos="7"],
+.tms-card[data-pos="8"] {
+  transform: translateY(40px) scale(0.84);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
 
   .tms-card .stars {
     margin-bottom: 14px;
@@ -2320,5 +2410,251 @@ backface-visibility:hidden;
 @media (min-width: 861px) {
   .testimonials-mobile-swiper {
     display: none;
+  }
+}
+/* ===================== MOBILE BOOKING FORM — ENHANCED ===================== */
+@media (max-width: 860px) {
+
+  .contact {
+    padding: 60px 0 80px;
+    background: var(--ivory-2);
+  }
+
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Hide map and social on mobile to reduce clutter */
+  .contact .map-embed,
+  .contact .social-row {
+    display: none;
+  }
+
+  /* Slim down the info block */
+  .contact-info {
+    padding: 0 20px 32px;
+    text-align: center;
+  }
+
+  .contact-info h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .contact-info > p {
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+  }
+
+  /* Contact detail pills */
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 0;
+    background: var(--ivory);
+    border-radius: 14px;
+    border: 1px solid rgba(28,47,38,0.08);
+    overflow: hidden;
+  }
+
+  .contact-details li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    border-bottom: 1px solid rgba(28,47,38,0.06);
+    margin-bottom: 0;
+  }
+
+  .contact-details li:last-child {
+    border-bottom: none;
+  }
+
+  .contact-details li i {
+    width: 32px;
+    height: 32px;
+    background: rgba(201,162,75,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  /* Form card — lifted, premium feel */
+  .contact-form-wrap {
+    margin: 0 16px;
+    padding: 28px 22px 32px;
+    background: var(--ivory);
+    border-radius: 20px;
+    border: 1px solid rgba(28,47,38,0.07);
+    box-shadow: 0 8px 40px -12px rgba(28,47,38,0.18),
+                0 2px 8px -2px rgba(28,47,38,0.06);
+  }
+
+  /* Form heading */
+  .contact-form-wrap .contact-form h3 {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    color: var(--forest);
+  }
+
+  /* Gold accent line under heading */
+  .contact-form-wrap .contact-form h3::after {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--gold);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+
+  /* Stack form rows to single column */
+  .contact-form-wrap .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Field groups */
+  .contact-form-wrap .form-group {
+    margin-bottom: 16px;
+  }
+
+  .contact-form-wrap .form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    color: var(--forest);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Inputs, selects, textarea */
+  .contact-form-wrap .form-group input,
+  .contact-form-wrap .form-group select,
+  .contact-form-wrap .form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;           /* prevents iOS zoom on focus */
+    border: 1.5px solid rgba(28,47,38,0.13);
+    background: var(--ivory-2);
+    border-radius: 12px;
+    color: var(--espresso);
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .contact-form-wrap .form-group input:focus,
+  .contact-form-wrap .form-group select:focus,
+  .contact-form-wrap .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: var(--ivory);
+    box-shadow: 0 0 0 3px rgba(201,162,75,0.12);
+  }
+
+  .contact-form-wrap .form-group textarea {
+    resize: none;
+    min-height: 100px;
+  }
+
+  /* Custom select arrow */
+  .contact-form-wrap .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A24B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 42px;
+  }
+
+  /* Submit button */
+  .contact-form-wrap .btn-gold.full-width {
+    padding: 17px 24px;
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+    border-radius: 12px;
+    margin-top: 6px;
+    box-shadow: 0 6px 24px -6px rgba(201,162,75,0.45);
+  }
+
+  .contact-form-wrap .btn-gold.full-width:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 32px -8px rgba(201,162,75,0.55);
+  }
+
+  /* Success / error message */
+  .contact-form-wrap .form-success {
+    border-radius: 10px;
+    font-size: 0.88rem;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+}
+
+/* ===================== MOBILE POPUP FORM — ENHANCED ===================== */
+@media (max-width: 780px) {
+  .inquiry-box {
+    border-radius: 20px;
+    max-width: 92vw;
+  }
+
+  .inquiry-form-side {
+    padding: 32px 22px 28px;
+  }
+
+  .inquiry-form-side h3 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+
+  .inquiry-form-side .form-group input,
+  .inquiry-form-side .form-group select {
+    font-size: 1rem;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(28,47,38,0.13);
+    background: var(--ivory-2);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .inquiry-form-side .form-group input:focus,
+  .inquiry-form-side .form-group select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,162,75,0.12);
+    outline: none;
+  }
+
+  .inquiry-form-side .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A24B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 42px;
+  }
+
+  .inquiry-form-side .btn-gold.full-width {
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    box-shadow: 0 6px 24px -6px rgba(201,162,75,0.4);
+    margin-top: 4px;
+  }
+
+  .inquiry-skip {
+    font-size: 0.78rem;
+    margin-top: 12px;
+    color: var(--text-muted);
   }
 }
