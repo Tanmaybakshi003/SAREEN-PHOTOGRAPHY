@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quotation Builder — Arun Sareen Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1714;
+    --ink-mid: #4a4744;
+    --ink-muted: #8a8784;
+    --gold: #b8943c;
+    --gold-light: #f5edd8;
+    --cream: #faf8f4;
+    --line: #e8e4dc;
+    --white: #ffffff;
+    --red: #c0392b;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ── FORM PANEL ── */
+  .form-panel {
+    background: var(--white);
+    border-right: 1px solid var(--line);
+    overflow-y: auto;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+
+  .form-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .form-header .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .monogram {
+    width: 36px;
+    height: 36px;
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+
+  .form-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.2px;
+  }
+
+  .form-header p {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+
+  .form-body { padding: 24px 28px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 12px;
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label:first-child { margin-top: 0; }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .field { margin-bottom: 14px; }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    margin-bottom: 5px;
+  }
+
+  .field input, .field select, .field textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--cream);
+    transition: border-color 0.15s;
+    outline: none;
+    resize: none;
+  }
+
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .event-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .event-card .event-num {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--ink-muted);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .remove-btn:hover { color: var(--red); background: #fdf2f1; }
+
+  .add-btn {
+    width: 100%;
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+    padding: 9px;
+    background: none;
+    color: var(--ink-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    margin-bottom: 4px;
+  }
+
+  .add-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-light); }
+
+  .deliverable-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .deliverable-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .deliverable-row input[type="text"] {
+    flex: 1;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    outline: none;
+  }
+
+  .deliverable-row input[type="text"]:focus { border-color: var(--gold); background: var(--white); }
+
+  .del-remove {
+    background: none;
+    border: none;
+    color: var(--ink-muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+
+  .del-remove:hover { color: var(--red); }
+
+  .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .generate-btn {
+    width: 100%;
+    padding: 13px;
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 28px;
+    letter-spacing: 0.3px;
+    transition: background 0.15s;
+  }
+
+  .generate-btn:hover { background: #2e2b27; }
+
+  .print-btn {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    color: var(--ink-muted);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.15s;
+  }
+
+  .print-btn:hover { border-color: var(--ink-mid); color: var(--ink); }
+
+  /* ── QUOTE PREVIEW ── */
+  .preview-panel {
+    padding: 40px;
+    overflow-y: auto;
+  }
+
+  #quote-doc {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+
+  .q-header {
+    padding: 40px 44px 32px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .q-logo-col .q-monogram {
+    width: 48px;
+    height: 48px;
+    background: var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .q-studio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .q-studio-name span { font-style: italic; font-weight: 400; }
+
+  .q-tagline {
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  .q-contact-col {
+    text-align: right;
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+  }
+
+  .q-contact-col a { color: var(--gold); text-decoration: none; }
+
+  .q-title-band {
+    background: var(--ink);
+    padding: 18px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .q-clients {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--white);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .q-client-sep { color: var(--gold); margin: 0 6px; font-weight: 400; }
+
+  .q-meta-col { text-align: right; }
+
+  .q-meta-col .q-dates {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2px;
+  }
+
+  .q-meta-col .q-service {
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .q-body { padding: 0 44px 36px; }
+
+  .q-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 32px 0 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .q-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    position: relative;
+    top: -2px;
+  }
+
+  .q-sub {
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+
+  .q-events-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .q-events-table thead th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    padding: 0 10px 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .q-events-table thead th:last-child { padding-right: 0; }
+
+  .q-events-table tbody tr { border-bottom: 1px solid var(--line); }
+
+  .q-events-table tbody tr:last-child { border-bottom: none; }
+
+  .q-events-table tbody td {
+    padding: 10px 10px 10px 0;
+    color: var(--ink);
+    vertical-align: top;
+    line-height: 1.4;
+  }
+
+  .q-events-table tbody td:last-child { padding-right: 0; }
+
+  .q-events-table td.date-col { white-space: nowrap; color: var(--ink-mid); width: 110px; }
+  .q-events-table td.event-col { font-weight: 500; width: 180px; }
+  .q-events-table td.crew-col { color: var(--ink-mid); font-size: 12px; }
+
+  .q-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .q-stat {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+
+  .q-stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 4px;
+  }
+
+  .q-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .q-deliverables {
+    list-style: none;
+    margin-top: 4px;
+  }
+
+  .q-deliverables li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .q-deliverables li:last-child { border-bottom: none; }
+
+  .q-check {
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .q-check::after {
+    content: '✓';
+    font-size: 10px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .q-pricing {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .q-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+
+  .q-price-row:last-child { border-bottom: none; }
+
+  .q-price-row.original .amount { color: var(--ink-muted); text-decoration: line-through; }
+
+  .q-price-row.special {
+    background: var(--ink);
+  }
+
+  .q-price-row.special .label { color: rgba(255,255,255,0.7); font-size: 12px; }
+  .q-price-row.special .amount { color: var(--white); font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; }
+
+  .q-price-row.saving {
+    background: var(--gold-light);
+    border-bottom: none;
+  }
+
+  .q-price-row.saving .label { color: var(--ink-mid); font-size: 12px; }
+  .q-price-row.saving .amount { color: var(--gold); font-weight: 600; }
+
+  .q-footer {
+    border-top: 2px solid var(--ink);
+    padding: 22px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .q-footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .q-footer-sub {
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 1px;
+  }
+
+  .q-footer-note {
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-align: right;
+    max-width: 200px;
+    line-height: 1.5;
+  }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    text-align: center;
+    color: var(--ink-muted);
+  }
+
+  .empty-state .es-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
+  .empty-state h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink-mid); margin-bottom: 6px; font-weight: 500; }
+  .empty-state p { font-size: 13px; }
+
+  @media print {
+    .form-panel { display: none; }
+    .preview-panel { padding: 0; }
+    #quote-doc { border: none; max-width: 100%; }
+    .print-btn, .generate-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ── FORM PANEL ── -->
+  <aside class="form-panel">
+    <div class="form-header">
+      <div class="logo-row">
+        <div class="monogram">AS</div>
+        <div>
+          <h1>Arun Sareen <span style="font-style:italic;font-weight:400">Photography</span></h1>
+        </div>
+      </div>
+      <p>Quotation builder &mdash; fill in the details, preview updates live</p>
+    </div>
+
+    <div class="form-body">
+
+      <div class="section-label">Client details</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Bride's name</label>
+          <input type="text" id="bride" placeholder="Upasna" oninput="render()">
+        </div>
+        <div class="field">
+          <label>Groom's name</label>
+          <input type="text" id="groom" placeholder="Aryan" oninput="render()">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>From date</label>
+          <input type="text" id="date-from" placeholder="09 Dec" oninput="render()">
+        </div>
+        <div class="field">
+          <label>To date</label>
+          <input type="text" id="date-to" placeholder="13 Dec" oninput="render()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Service type</label>
+        <input type="text" id="service-type" placeholder="Wedding Photography &amp; Cinematography" oninput="render()">
+      </div>
+
+      <div class="section-label">Event coverage</div>
+
+      <div id="events-list"></div>
+      <button class="add-btn" onclick="addEvent()">+ Add event</button>
+
+      <div class="section-label">Deliverables</div>
+
+      <div id="deliverables-list"></div>
+      <button class="add-btn" onclick="addDeliverable()">+ Add deliverable</button>
+
+      <div class="section-label">Pricing</div>
+
+      <div class="price-row">
+        <div class="field">
+          <label>Original price (₹)</label>
+          <input type="text" id="price-original" placeholder="2,55,000" oninput="render()">
+        </div>
+        <div class="field">
+          <label>Special price (₹)</label>
+          <input type="text" id="price-special" placeholder="2,20,000" oninput="render()">
+        </div>
+      </div>
+
+      <button class="generate-btn" onclick="render()">Generate quotation</button>
+      <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+    </div>
+  </aside>
+
+  <!-- ── PREVIEW PANEL ── -->
+  <main class="preview-panel">
+    <div id="preview-root">
+      <div class="empty-state">
+        <div class="es-icon">📋</div>
+        <h2>Your quotation will appear here</h2>
+        <p>Fill in the details on the left &mdash; the preview updates as you type.</p>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  var events = [
+    { date: '09 December', name: 'Ring Ceremony', crew: '2 Videographers + 2 Photographers (Still)' },
+    { date: '11 December', name: 'Bride Side — Mehendi', crew: '1 Videographer + 1 Photographer (Still)' },
+    { date: '13 December', name: 'Wedding Function', crew: '3 Videographers + 3 Photographers (Still) + Drone Coverage' }
+  ];
+
+  var deliverables = [
+    { text: 'Cinematic Wedding Film', checked: true },
+    { text: 'Professionally Edited Videos', checked: true },
+    { text: 'High-Resolution Edited Photographs', checked: true },
+    { text: '4 Instagram Reels', checked: true },
+    { text: '2 Large Size Photo Frames', checked: true }
+  ];
+
+  function buildEventCard(ev, i) {
+    return '<div class="event-card" id="ev-' + i + '">' +
+      '<div class="event-num">Event ' + (i+1) + '</div>' +
+      '<button class="remove-btn" onclick="removeEvent(' + i + ')" title="Remove">×</button>' +
+      '<div class="field"><label>Date</label><input type="text" value="' + escHtml(ev.date) + '" placeholder="09 December" oninput="updateEvent(' + i + ',\'date\',this.value)"></div>' +
+      '<div class="field"><label>Event name</label><input type="text" value="' + escHtml(ev.name) + '" placeholder="Ring Ceremony" oninput="updateEvent(' + i + ',\'name\',this.value)"></div>' +
+      '<div class="field"><label>Crew / coverage</label><input type="text" value="' + escHtml(ev.crew) + '" placeholder="2 Videographers + 2 Photographers" oninput="updateEvent(' + i + ',\'crew\',this.value)"></div>' +
+    '</div>';
+  }
+
+  function buildDeliverableRow(d, i) {
+    return '<div class="deliverable-row">' +
+      '<input type="checkbox"' + (d.checked ? ' checked' : '') + ' onchange="updateDeliverable(' + i + ',\'checked\',this.checked)">' +
+      '<input type="text" value="' + escHtml(d.text) + '" placeholder="Deliverable item" oninput="updateDeliverable(' + i + ',\'text\',this.value)">' +
+      '<button class="del-remove" onclick="removeDeliverable(' + i + ')" title="Remove">×</button>' +
+    '</div>';
+  }
+
+  function renderForm() {
+    var evHTML = '';
+    for (var i = 0; i < events.length; i++) evHTML += buildEventCard(events[i], i);
+    document.getElementById('events-list').innerHTML = evHTML;
+
+    var delHTML = '';
+    for (var i = 0; i < deliverables.length; i++) delHTML += buildDeliverableRow(deliverables[i], i);
+    document.getElementById('deliverables-list').innerHTML = delHTML;
+  }
+
+  function addEvent() {
+    events.push({ date: '', name: '', crew: '' });
+    renderForm();
+    render();
+  }
+
+  function removeEvent(i) {
+    events.splice(i, 1);
+    renderForm();
+    render();
+  }
+
+  function updateEvent(i, key, val) {
+    events[i][key] = val;
+    render();
+  }
+
+  function addDeliverable() {
+    deliverables.push({ text: '', checked: true });
+    renderForm();
+    render();
+  }
+
+  function removeDeliverable(i) {
+    deliverables.splice(i, 1);
+    renderForm();
+    render();
+  }
+
+  function updateDeliverable(i, key, val) {
+    deliverables[i][key] = val;
+    render();
+  }
+
+  function escHtml(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function calcCameras() {
+    var total = 0;
+    var hasDrone = false;
+    events.forEach(function(ev) {
+      var text = ev.crew || '';
+      var vm = text.match(/(\d+)\s*Videographer/i);
+      var pm = text.match(/(\d+)\s*Photographer/i);
+      if (vm) total += parseInt(vm[1]);
+      if (pm) total += parseInt(pm[1]);
+      if (/drone/i.test(text)) hasDrone = true;
+    });
+    return { cameras: total, drone: hasDrone };
+  }
+
+  function calcSaving(orig, special) {
+    orig = parseInt((orig || '').replace(/[^0-9]/g,'')) || 0;
+    special = parseInt((special || '').replace(/[^0-9]/g,'')) || 0;
+    return orig - special;
+  }
+
+  function fmtRs(s) {
+    s = String(s || '').replace(/[^0-9]/g,'');
+    if (!s) return '';
+    var n = parseInt(s);
+    return '\u20B9' + n.toLocaleString('en-IN') + '/-';
+  }
+
+  function render() {
+    var bride = document.getElementById('bride').value.trim();
+    var groom = document.getElementById('groom').value.trim();
+    var dateFrom = document.getElementById('date-from').value.trim();
+    var dateTo = document.getElementById('date-to').value.trim();
+    var serviceType = document.getElementById('service-type').value.trim() || 'Wedding Photography &amp; Cinematography';
+    var priceOrig = document.getElementById('price-original').value.trim();
+    var priceSpec
