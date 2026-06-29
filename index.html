@@ -31,6 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="about-style.css">
 
 <!-- Structured Data: LocalBusiness / Photographer -->
 <script type="application/ld+json">
@@ -331,7 +332,7 @@
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
-      <figure class="gallery-item" data-cat="wedding">
+      <figure class="gallery-item gi-feature" data-cat="wedding"> 
         <img src="images/p2.webp" loading="lazy" alt="Wedding ceremony moment">
         <figcaption><span>Wedding</span><h4>The Ceremony</h4></figcaption>
       </figure>
@@ -343,7 +344,7 @@
         <img src="images/p1.webp" loading="lazy" alt="Bridal portrait with jewelry detail">
         <figcaption><span>Bridal Portrait</span><h4>The Bride in Gold</h4></figcaption>
       </figure>
-      <figure class="gallery-item" data-cat="family">
+      <figure class="gallery-item gi-wide" data-cat="family">
         <img src="images/p3.webp" loading="lazy" alt="Family portrait session">
         <figcaption><span>Family</span><h4>The Mehta Family</h4></figcaption>
       </figure>
@@ -380,23 +381,63 @@
         <figcaption><span>Event</span><h4>Live Performance Coverage</h4></figcaption>
       </figure>
     </div>
-
-    <!-- BEFORE / AFTER -->
-    <div class="before-after-section">
-      <p class="eyebrow center" data-aos>The Finishing Touch</p>
-      <h3 class="center" data-aos>Before &amp; After — Editing &amp; Retouching</h3>
-      <div class="ba-slider" data-aos>
-        <div class="ba-wrap" id="baWrap">
-          <img src="images/before edit.webp" loading="lazy" alt="Before color grading and retouching" class="ba-img ba-before">
-          <img src="images/after edit.webp" loading="lazy" alt="After color grading and retouching" class="ba-img ba-after">
-          <div class="ba-divider" id="baDivider"><span><i class="fa-solid fa-arrows-left-right"></i></span></div>
-        </div>
-        <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-range" aria-label="Drag to compare before and after">
-        <div class="ba-labels"><span>Before</span><span>After</span></div>
-      </div>
-    </div>
   </div>
 </section>
+<!-- FAQ -->
+    <div class="faq-section" id="faq">
+      <p class="eyebrow center" data-aos>Good to Know</p>
+      <h3 class="center" data-aos>Frequently Asked Questions</h3>
+      <p class="section-sub center" data-aos>Everything couples and clients usually ask before booking — and a few things we wish more people asked.</p>
+
+      <div class="faq-list" data-aos>
+        <details class="faq-item" open>
+          <summary><span>How far in advance should we book?</span><i class="fa-solid fa-plus faq-icon"></i></summary>
+          <div class="faq-answer">
+            <p>For weddings, 4–6 months ahead is ideal, especially for peak wedding season dates. For pre-wedding shoots, family sessions or events, 2–3 weeks is usually enough — though earlier is always better.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>Do you travel for destination weddings?</span><i class="fa-solid fa-plus faq-icon"></i></summary>
+          <div class="faq-answer">
+            <p>Yes — we regularly shoot across India and internationally, from Udaipur to Tuscany. Travel and accommodation are quoted separately based on location and duration.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>How long until we receive our photos and film?</span><i class="fa-solid fa-plus faq-icon"></i></summary>
+          <div class="faq-answer">
+            <p>Sneak peeks within 72 hours of the shoot. Full edited galleries and cinematic films are delivered within the timeline agreed at booking — typically 3–6 weeks depending on the scope of the event.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>Can we customize our package?</span><i class="fa-solid fa-plus faq-icon"></i></summary>
+          <div class="faq-answer">
+            <p>Absolutely. Every quote is tailored — number of days, photographers, cinematography, albums and add-ons. Tell us what matters most on the discovery call and we'll build around it.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>Do we get the raw, unedited images?</span><i class="fa-solid fa-plus faq-icon"></i></summary>
+          <div class="faq-answer">
+            <p>We deliver a fully curated, professionally edited gallery rather than raw files — that's what gives every image our signature color, tone and finish.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>What's your booking and cancellation policy?</span><i class="fa-solid fa-plus faq-icon"></i></summary>
+          <div class="faq-answer">
+            <p>An advance deposit secures your date once confirmed. The remaining balance follows the schedule in your proposal. Rescheduling is easy with reasonable notice — just get in touch.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="faq-cta" data-aos>
+        <p>Still have a question?</p>
+        <a href="#contact" class="btn btn-outline">Ask Us Directly</a>
+      </div>
+    </div>
 
 <!-- ================= SERVICES ================= -->
 <section class="services" id="services">
@@ -463,51 +504,51 @@
       <div class="testimonial-column" style="animation-duration:24s;">
         <div class="testimonial-mini-card">
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p>"Arun and his team made our wedding feel effortless. Every emotional moment was captured without us even noticing the camera. The film still makes us cry happy tears."</p>
+          <p>"Arun captured every emotion beautifully. The photos feel so natural, and our family absolutely loved them. Highly recommended!"</p>
           <div class="t-person">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=120&auto=format&fit=crop" alt="Priya, bride">
-            <div><h4>Priya &amp; Rohan</h4><span>Wedding, Udaipur</span></div>
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=120&auto=format&fit=crop" alt="Ritika, bride">
+            <div><h4>Ritika & Karan Malhotra</h4><span>Wedding</span></div>
           </div>
         </div>
         <div class="testimonial-mini-card">
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p>"Coverage of our leadership summit was sharp, professional and delivered faster than we expected. The team blended right into the event without disrupting flow."</p>
+          <p>"Our wedding photos are simply stunning. Every picture tells a story, and the editing is elegant without feeling overdone."</p>
           <div class="t-person">
             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=120&auto=format&fit=crop" alt="Karan Mehta, event manager">
-            <div><h4>Karan Mehta</h4></div>
+            <div><h4>Rohit & Priya Bansal</h4></div>
           </div>
         </div>
         <div class="testimonial-mini-card">
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p>"Our lookbook shoot gave us images we still use across every platform a year later. Creative direction was spot on from the very first call."</p>
+          <p>"Amazing experience from start to finish. Beautiful photos, timely delivery, and memories we'll cherish forever"</p>
           <div class="t-person">
             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=120&auto=format&fit=crop" alt="Simran Bhatia, founder">
-            <div><h4>Simran Bhatia</h4></div>
+            <div><h4>Ankit & Simran Chawla</h4></div>
           </div>
         </div>
         <!-- duplicate set for seamless vertical loop -->
         <div class="testimonial-mini-card" aria-hidden="true">
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p>"Arun and his team made our wedding feel effortless. Every emotional moment was captured without us even noticing the camera. The film still makes us cry happy tears."</p>
+          <p>"Arun captured every emotion beautifully. The photos feel so natural, and our family absolutely loved them. Highly recommended!"</p>
           <div class="t-person">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=120&auto=format&fit=crop" alt="Priya, bride">
-            <div><h4>Priya &amp; Rohan</h4><span>Wedding, Udaipur</span></div>
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=120&auto=format&fit=crop" alt="Ritika, bride">
+            <div><h4>Ritika &amp; Karan Malhotra</h4><span>Wedding, Udaipur</span></div>
           </div>
         </div>
         <div class="testimonial-mini-card" aria-hidden="true">
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p>"Coverage of our leadership summit was sharp, professional and delivered faster than we expected. The team blended right into the event without disrupting flow."</p>
+          <p>"Our wedding photos are simply stunning. Every picture tells a story, and the editing is elegant without feeling overdone. "</p>
           <div class="t-person">
             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=120&auto=format&fit=crop" alt="Karan Mehta, event manager">
-            <div><h4>Karan Mehta</h4></div>
+            <div><h4>Rohit & Priya Bansal</h4></div>
           </div>
         </div>
         <div class="testimonial-mini-card" aria-hidden="true">
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p>"Our lookbook shoot gave us images we still use across every platform a year later. Creative direction was spot on from the very first call."</p>
+          <p>"Amazing experience from start to finish. Beautiful photos, timely delivery, and memories we'll cherish forever"</p>
           <div class="t-person">
             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=120&auto=format&fit=crop" alt="Simran Bhatia, founder">
-            <div><h4>Simran Bhatia</h4></div>
+            <div><h4>Ankit & Simran Chawla</h4></div>
           </div>
         </div>
       </div>
@@ -531,10 +572,10 @@
         </div>
         <div class="testimonial-mini-card">
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p>"Our family shoot felt completely unposed, yet every frame turned out beautifully composed. Highly recommend for anyone with young kids."</p>
+          <p>"Arun and his team made everyone feel comfortable. They captured all the important family moments perfectly."</p>
           <div class="t-person">
             <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=120&auto=format&fit=crop" alt="Vikram Oberoi, father">
-            <div><h4>Vikram </h4><span>Family Session</span></div>
+            <div><h4>Sunita Arora </h4><span>Family Session</span></div>
           </div>
         </div>
         <!-- duplicate set for seamless vertical loop -->
