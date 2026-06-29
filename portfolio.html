@@ -8,54 +8,1127 @@
 <meta name="keywords" content="photography portfolio, wedding photography gallery, bridal portrait gallery, brand photography portfolio, Arun Sareen Photography">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.arunsareenphotography.com/portfolio.html">
-
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.arunsareenphotography.com/portfolio.html">
 <meta property="og:title" content="Portfolio & Gallery | Arun Sareen Photography">
 <meta property="og:description" content="Browse weddings, portraits, family sessions, events and brand campaigns from the Arun Sareen Photography portfolio.">
 <meta property="og:image" content="https://www.arunsareenphotography.com/og-image.jpg">
 <meta property="og:locale" content="en_IN">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Portfolio & Gallery | Arun Sareen Photography">
 <meta name="twitter:description" content="Browse weddings, portraits, family sessions, events and brand campaigns from the Arun Sareen Photography portfolio.">
 <meta name="twitter:image" content="https://www.arunsareenphotography.com/og-image.jpg">
-
-<!-- Favicon (replace with real files — see SETUP-GUIDE) -->
 <link rel="icon" type="image/png" href="/favicon.png">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 
-<!-- Structured Data: ImageGallery -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ImageGallery",
-  "name": "Arun Sareen Photography — Portfolio",
-  "url": "https://www.arunsareenphotography.com/portfolio.html",
-  "author": {
-    "@type": "Photographer",
-    "name": "Arun Sareen Photography"
-  }
+<style>
+/* ============================================================
+   PORTFOLIO PAGE — DISTINCT DARK EDITORIAL IDENTITY
+   This page uses the INVERSE of the site palette:
+   Dark background (#0a1510) with ivory text — like a gallery
+   ============================================================ */
+
+:root {
+  --ivory: #F7F3EA;
+  --ivory-2: #EFE8D8;
+  --forest: #1C2F26;
+  --forest-2: #233B30;
+  --dark-bg: #080f0c;
+  --dark-mid: #0f1e17;
+  --dark-card: #152118;
+  --gold: #C9A24B;
+  --gold-light: #E8CE8B;
+  --espresso: #2B2521;
+  --text-muted: #6E665C;
+  --white: #FFFFFF;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Outfit', sans-serif;
+  --transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-</script>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* ---- PORTFOLIO PAGE BODY — DARK ---- */
+body.portfolio-body {
+  background: var(--dark-bg);
+  color: var(--ivory);
+}
+
+/* ============================================================
+   PRELOADER — same as site
+   ============================================================ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #0a1510;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; }
+.pl-glow { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); }
+.pl-glow-1 { width: 420px; height: 420px; background: radial-gradient(circle, rgba(201,162,75,0.13) 0%, transparent 70%); top: -100px; right: -80px; animation: glowPulse 4s ease-in-out infinite alternate; }
+.pl-glow-2 { width: 320px; height: 320px; background: radial-gradient(circle, rgba(28,47,38,0.6) 0%, transparent 70%); bottom: -60px; left: -60px; animation: glowPulse 5s ease-in-out infinite alternate-reverse; }
+@keyframes glowPulse { from { opacity: 0.6; transform: scale(0.95); } to { opacity: 1; transform: scale(1.05); } }
+.pl-aperture { position: absolute; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
+.pl-aperture-ring { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(201,162,75,0.2); animation: apertureSpin 12s linear infinite; }
+.pl-aperture-ring-2 { inset: 16px; border: 1px dashed rgba(201,162,75,0.1); animation-duration: 18s; animation-direction: reverse; }
+.pl-aperture-blades { position: absolute; inset: 0; border-radius: 50%; animation: apertureSpin 12s linear infinite; }
+.pl-aperture-blades span { position: absolute; top: 50%; left: 50%; width: 1px; height: 50%; background: linear-gradient(to bottom, rgba(201,162,75,0.35), transparent); transform-origin: top center; transform: translateX(-50%) rotate(calc(var(--i, 0) * 60deg)); }
+.pl-aperture-blades span:nth-child(1){--i:0} .pl-aperture-blades span:nth-child(2){--i:1} .pl-aperture-blades span:nth-child(3){--i:2} .pl-aperture-blades span:nth-child(4){--i:3} .pl-aperture-blades span:nth-child(5){--i:4} .pl-aperture-blades span:nth-child(6){--i:5}
+@keyframes apertureSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.pl-frame { position: absolute; inset: 40px; pointer-events: none; }
+.pl-corner { position: absolute; width: 28px; height: 28px; border-color: rgba(201,162,75,0.5); border-style: solid; animation: frameReveal 1s cubic-bezier(0.22,1,0.36,1) forwards; opacity: 0; }
+.pl-tl { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; animation-delay: 0.2s; }
+.pl-tr { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; animation-delay: 0.35s; }
+.pl-bl { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; animation-delay: 0.5s; }
+.pl-br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; animation-delay: 0.65s; }
+@keyframes frameReveal { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+.pl-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; animation: contentFadeUp 1s cubic-bezier(0.22,1,0.36,1) 0.4s forwards; opacity: 0; }
+@keyframes contentFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.pl-logo-mark { font-family: var(--font-display); font-size: 1rem; font-weight: 600; width: 52px; height: 52px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 6px; }
+.pl-divider { width: 40px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+.pl-studio-name { font-family: var(--font-display); font-size: clamp(1.4rem, 5vw, 2rem); letter-spacing: 0.38em; color: var(--ivory); font-weight: 400; text-indent: 0.38em; }
+.pl-tagline { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-light); font-weight: 400; }
+.pl-progress-wrap { position: absolute; bottom: 56px; left: 50%; transform: translateX(-50%); width: 160px; height: 1px; background: rgba(247,243,234,0.1); border-radius: 1px; overflow: hidden; }
+.pl-progress-bar { height: 100%; width: 0%; background: linear-gradient(to right, transparent, var(--gold), var(--gold-light)); animation: progressFill 1.6s cubic-bezier(0.22,1,0.36,1) 0.3s forwards; }
+@keyframes progressFill { from { width: 0%; } to { width: 100%; } }
+.pl-film-strip { position: absolute; bottom: 0; left: 0; right: 0; height: 28px; background: rgba(0,0,0,0.4); border-top: 1px solid rgba(247,243,234,0.06); display: flex; align-items: center; justify-content: space-between; padding: 0 12px; }
+.pl-film-strip span { width: 18px; height: 12px; border: 1px solid rgba(247,243,234,0.15); border-radius: 2px; background: rgba(0,0,0,0.3); flex-shrink: 0; }
+
+/* ============================================================
+   HEADER / NAV — dark version
+   ============================================================ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  transition: var(--transition);
+  padding: 22px 0;
+}
+.site-header.scrolled {
+  background: rgba(8,15,12,0.94);
+  backdrop-filter: blur(12px);
+  padding: 14px 0;
+  box-shadow: 0 1px 0 rgba(201,162,75,0.15);
+}
+.nav-wrap { max-width: 1320px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-mark { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; width: 42px; height: 42px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); letter-spacing: 0.05em; }
+.logo-text { font-family: var(--font-display); font-size: 1.25rem; color: var(--ivory); letter-spacing: 0.04em; }
+.logo-text em { color: var(--gold-light); font-style: italic; }
+.main-nav { display: flex; align-items: center; gap: 30px; }
+.main-nav a { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ivory); font-weight: 500; position: relative; padding-bottom: 4px; transition: color 0.3s ease; }
+.main-nav a:not(.nav-cta)::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+.main-nav a:not(.nav-cta):hover { color: var(--gold-light); }
+.main-nav a:not(.nav-cta):hover::after { width: 100%; }
+.main-nav a.active { color: var(--gold-light); }
+.main-nav a.active::after { width: 100%; }
+.nav-cta { background: var(--gold); color: var(--forest) !important; padding: 11px 24px; border-radius: 2px; font-weight: 600; transition: var(--transition); }
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-toggle span { display: block; width: 26px; height: 1.5px; background: var(--ivory); transition: var(--transition); }
+.nav-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+.nav-overlay.show { opacity: 1; visibility: visible; }
+
+/* ============================================================
+   PORTFOLIO EDITORIAL HERO
+   Split: text left / image mosaic right — dark bg
+   ============================================================ */
+.pf-hero {
+  min-height: 100vh;
+  background: var(--dark-bg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 140px 60px 80px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Vertical gold line accent */
+.pf-hero-left::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 160px;
+  bottom: 80px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+  opacity: 0.35;
+}
+
+.pf-hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pf-hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.pf-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 7vw, 7.2rem);
+  font-weight: 300;
+  line-height: 0.92;
+  color: var(--ivory);
+  letter-spacing: -0.02em;
+  margin-bottom: 36px;
+}
+.pf-hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+  display: block;
+}
+
+.pf-hero-meta {
+  display: flex;
+  gap: 36px;
+  border-top: 1px solid rgba(247,243,234,0.1);
+  padding-top: 32px;
+}
+.pf-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pf-meta-num {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  color: var(--gold);
+  font-weight: 400;
+  line-height: 1;
+}
+.pf-meta-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247,243,234,0.45);
+  font-weight: 500;
+}
+
+.pf-hero-right {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+}
+
+.pf-hero-img {
+  overflow: hidden;
+  position: relative;
+}
+.pf-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.22,1,0.36,1);
+  filter: brightness(0.85);
+}
+.pf-hero-img:hover img { transform: scale(1.05); filter: brightness(1); }
+
+/* Tall image spanning both rows */
+.pf-hero-img.tall { grid-row: span 2; }
+
+/* Subtle grain on the whole right panel */
+.pf-hero-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scroll indicator */
+.pf-scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(247,243,234,0.35);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  z-index: 3;
+}
+.pf-scroll-hint::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(247,243,234,0.25);
+}
+
+/* ============================================================
+   CATEGORY NAV STRIP — magazine tabs
+   ============================================================ */
+.pf-cat-nav {
+  background: var(--dark-bg);
+  border-bottom: 1px solid rgba(247,243,234,0.08);
+  position: sticky;
+  top: 64px;
+  z-index: 100;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.pf-cat-nav::-webkit-scrollbar { display: none; }
+
+.pf-cat-nav-inner {
+  display: flex;
+  align-items: stretch;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+  gap: 0;
+}
+
+.pf-cat-btn {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(247,243,234,0.38);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 20px 24px 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pf-cat-btn .cat-count {
+  font-size: 0.6rem;
+  color: rgba(201,162,75,0.5);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.pf-cat-btn:hover { color: rgba(247,243,234,0.75); }
+.pf-cat-btn.active {
+  color: var(--ivory);
+  border-bottom-color: var(--gold);
+}
+.pf-cat-btn.active .cat-count { color: var(--gold); }
+
+/* ============================================================
+   RECOGNITION STRIP
+   ============================================================ */
+.pf-recognition {
+  background: var(--dark-mid);
+  border-bottom: 1px solid rgba(247,243,234,0.05);
+  padding: 18px 0;
+  overflow: hidden;
+}
+.pf-recognition-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  animation: recogScroll 28s linear infinite;
+}
+@keyframes recogScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.pf-recog-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 40px;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247,243,234,0.32);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.pf-recog-item i {
+  color: var(--gold);
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   CATEGORY SECTIONS
+   Each category is a full-page section with unique layout
+   ============================================================ */
+.pf-category-section {
+  padding: 100px 0;
+  border-bottom: 1px solid rgba(247,243,234,0.05);
+  position: relative;
+}
+
+/* Category header */
+.pf-section-header {
+  max-width: 1320px;
+  margin: 0 auto 64px;
+  padding: 0 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.pf-section-label {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+}
+
+.pf-section-num {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 10vw, 9rem);
+  font-weight: 300;
+  color: rgba(247,243,234,0.04);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.pf-section-title-group {
+  padding-bottom: 14px;
+}
+
+.pf-section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pf-section-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.pf-section-name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--ivory);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.pf-section-name em {
+  font-style: italic;
+  color: rgba(247,243,234,0.5);
+}
+
+.pf-section-desc {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: rgba(247,243,234,0.38);
+  max-width: 340px;
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ---- GRID LAYOUTS PER CATEGORY ---- */
+/* Weddings: 1 tall hero + 3 smaller right */
+.pf-grid-weddings {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+.pf-grid-weddings .pf-img-main {
+  grid-row: 1 / 3;
+  aspect-ratio: 3/4;
+}
+.pf-grid-weddings .pf-img-side {
+  aspect-ratio: auto;
+}
+
+/* Pre-wedding: panoramic + two portrait pair */
+.pf-grid-prewedding {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 4px;
+}
+.pf-grid-prewedding .pf-img-wide {
+  grid-column: 1 / 3;
+  aspect-ratio: 16/9;
+}
+.pf-grid-prewedding .pf-img-tall {
+  grid-row: 1 / 3;
+  grid-column: 3;
+  aspect-ratio: auto;
+  min-height: 440px;
+}
+.pf-grid-prewedding .pf-img-sq {
+  grid-column: 1 / 3;   /* was just column 1 — now spans the full left width */
+  aspect-ratio: 21/9;   /* was 1/1 — 1:1 would be too tall once it spans 2 columns */
+}
+
+/* Portraits: masonry 4-col */
+.pf-grid-portraits {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.pf-grid-portraits .pf-img-port {
+  aspect-ratio: 2/3;
+}
+.pf-grid-portraits .pf-img-port.accent {
+  aspect-ratio: auto;   /* was: 1/1.2 — let it stretch to match the row height set by the taller port image */
+}
+
+/* Family: editorial 3-col */
+.pf-grid-family {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 4px;
+}
+.pf-grid-family .pf-img-fam {
+  aspect-ratio: 3/4;
+}
+.pf-grid-family .pf-img-fam.center {
+  aspect-ratio: 2/3;
+}
+
+/* Events: horizontal strips */
+.pf-grid-events {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr;
+  gap: 4px;
+}
+.pf-grid-events .pf-img-ev {
+  aspect-ratio: 4/3;
+}
+.pf-grid-events .pf-img-ev.hero {
+  aspect-ratio: auto;
+  grid-row: span 2;
+}
+
+/* --- Shared image item --- */
+.pf-img-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--dark-card);
+}
+.pf-img-item img {
+  position: absolute; 
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1s cubic-bezier(0.22,1,0.36,1), filter 0.5s ease;
+  filter: brightness(0.88) saturate(0.9);
+}
+.pf-img-item:hover img {
+  transform: scale(1.07);
+  filter: brightness(1) saturate(1);
+}
+
+/* Hover caption */
+.pf-img-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.72) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.pf-img-item:hover .pf-img-caption { opacity: 1; }
+.pf-img-caption-tag {
+  font-size: 0.64rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.pf-img-caption-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--ivory);
+  font-weight: 400;
+}
+
+/* Corner brackets on hover */
+.pf-img-item::before,
+.pf-img-item::after {
+  content: '';
+  position: absolute;
+  width: 22px; height: 22px;
+  border-color: rgba(232,206,139,0.7);
+  border-style: solid;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 3;
+  pointer-events: none;
+}
+.pf-img-item::before { top: 14px; left: 14px; border-width: 1px 0 0 1px; transform: translate(-4px, -4px); }
+.pf-img-item::after { bottom: 14px; right: 14px; border-width: 0 1px 1px 0; transform: translate(4px, 4px); }
+.pf-img-item:hover::before { opacity: 1; transform: translate(0, 0); }
+.pf-img-item:hover::after { opacity: 1; transform: translate(0, 0); }
+
+/* ============================================================
+   FEATURED STORY CARDS — between categories
+   ============================================================ */
+.pf-story-card {
+  max-width: 1320px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+
+.pf-story-inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  background: var(--dark-card);
+  border: 1px solid rgba(247,243,234,0.06);
+  overflow: hidden;
+}
+
+.pf-story-img {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+}
+.pf-story-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8) saturate(0.85);
+  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
+}
+.pf-story-inner:hover .pf-story-img img { transform: scale(1.04); }
+
+.pf-story-text {
+  padding: 52px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pf-story-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pf-story-tag::before { content: ''; width: 18px; height: 1px; background: var(--gold); }
+
+.pf-story-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-style: italic;
+  color: var(--ivory);
+  font-weight: 300;
+  line-height: 1.45;
+  margin-bottom: 28px;
+}
+
+.pf-story-attr {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pf-story-client {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(247,243,234,0.85);
+  letter-spacing: 0.04em;
+}
+.pf-story-detail {
+  font-size: 0.78rem;
+  color: rgba(247,243,234,0.35);
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   BEFORE / AFTER — dark version
+   ============================================================ */
+.pf-ba-section {
+  max-width: 1320px;
+  margin: 100px auto;
+  padding: 0 60px;
+}
+
+.pf-ba-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(247,243,234,0.08);
+}
+
+.pf-ba-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.pf-ba-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--ivory);
+  font-weight: 300;
+}
+
+.pf-ba-desc {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(247,243,234,0.35);
+  font-size: 1rem;
+  max-width: 280px;
+  text-align: right;
+  line-height: 1.55;
+}
+
+.ba-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--dark-card);
+}
+.ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ba-after { clip-path: inset(0 50% 0 0); }
+.ba-divider {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 1px; background: var(--gold-light); pointer-events: none;
+}
+.ba-divider span {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gold); color: var(--forest);
+  display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+}
+.ba-range {
+  width: 100%; margin-top: 16px;
+  appearance: none; height: 1px;
+  background: rgba(247,243,234,0.15); outline: none; cursor: pointer;
+}
+.ba-range::-webkit-slider-thumb {
+  appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--gold); border: 2px solid var(--dark-bg); cursor: pointer;
+}
+.ba-range::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--gold); border: 2px solid var(--dark-bg); cursor: pointer;
+}
+.ba-labels {
+  display: flex; justify-content: space-between;
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(247,243,234,0.3); margin-top: 10px;
+}
+
+/* ============================================================
+   CLOSING CTA — dark, client quote + book prompt
+   ============================================================ */
+.pf-closing {
+  background: var(--dark-mid);
+  border-top: 1px solid rgba(247,243,234,0.06);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Decorative background text */
+.pf-closing::before {
+  content: 'AS';
+  font-family: var(--font-display);
+  font-size: clamp(14rem, 30vw, 22rem);
+  font-weight: 500;
+  color: rgba(247,243,234,0.02);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.pf-closing-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.pf-closing-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ivory);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.pf-closing-attribution {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 60px;
+}
+
+.pf-closing-divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin: 0 auto 60px;
+}
+
+.pf-closing-cta-text {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247,243,234,0.35);
+  margin-bottom: 28px;
+}
+
+.pf-closing-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-pf-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--forest);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 2px;
+}
+.btn-pf-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+.btn-pf-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--ivory);
+  border: 1px solid rgba(247,243,234,0.25);
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 2px;
+}
+.btn-pf-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+/* ============================================================
+   FOOTER — dark version
+   ============================================================ */
+.pf-footer {
+  background: #050d09;
+  border-top: 1px solid rgba(247,243,234,0.06);
+  padding: 80px 0 0;
+}
+.pf-footer-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 60px 60px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 50px;
+  border-bottom: 1px solid rgba(247,243,234,0.06);
+}
+.pf-footer-brand .logo-text { color: var(--ivory); }
+.pf-footer-brand p { margin-top: 18px; font-size: 0.9rem; color: rgba(247,243,234,0.38); line-height: 1.7; max-width: 300px; }
+.pf-footer-col h4 {
+  color: var(--ivory); font-size: 0.72rem; letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 20px;
+  font-family: var(--font-body); font-weight: 600;
+}
+.pf-footer-col a {
+  display: block; font-size: 0.88rem;
+  color: rgba(247,243,234,0.4); margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+.pf-footer-col a:hover { color: var(--gold-light); }
+.pf-footer-col a i { width: 16px; color: var(--gold); margin-right: 8px; opacity: 0.7; }
+.pf-footer-bottom {
+  max-width: 1320px; margin: 0 auto;
+  padding: 24px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; color: rgba(247,243,234,0.2);
+  flex-wrap: wrap; gap: 12px;
+}
+.pf-footer-legal { display: flex; gap: 24px; }
+.pf-footer-legal a { color: rgba(247,243,234,0.2); }
+.pf-footer-legal a:hover { color: var(--gold-light); }
+
+/* ============================================================
+   WHATSAPP FLOAT
+   ============================================================ */
+.whatsapp-float {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 56px; height: 56px; background: #25D366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.6rem; z-index: 900;
+  box-shadow: 0 8px 24px -8px rgba(0,0,0,0.5);
+  transition: var(--transition);
+}
+.whatsapp-float:hover { transform: scale(1.08); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1),
+              transform 0.85s cubic-bezier(0.22,1,0.36,1);
+}
+[data-reveal].in-view { opacity: 1; transform: translateY(0); }
+
+/* Stagger delays for grid items */
+[data-reveal][data-delay="1"] { transition-delay: 0.1s; }
+[data-reveal][data-delay="2"] { transition-delay: 0.2s; }
+[data-reveal][data-delay="3"] { transition-delay: 0.3s; }
+[data-reveal][data-delay="4"] { transition-delay: 0.4s; }
+
+/* ============================================================
+   LIGHTBOX (simple)
+   ============================================================ */
+.pf-lightbox {
+  position: fixed; inset: 0; z-index: 5000;
+  background: rgba(0,0,0,0.95);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.pf-lightbox.open { opacity: 1; visibility: visible; }
+.pf-lightbox img {
+  max-width: 90vw; max-height: 88vh;
+  object-fit: contain;
+  border: 1px solid rgba(247,243,234,0.06);
+}
+.pf-lb-close {
+  position: absolute; top: 24px; right: 24px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(247,243,234,0.08); border: 1px solid rgba(247,243,234,0.12);
+  color: var(--ivory); font-size: 1.3rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+.pf-lb-close:hover { background: var(--gold); color: var(--forest); border-color: var(--gold); }
+.pf-lb-caption {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  text-align: center;
+}
+.pf-lb-caption-tag {
+  font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 4px;
+}
+.pf-lb-caption-name {
+  font-family: var(--font-display); font-size: 1.1rem; color: var(--ivory);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .pf-footer-grid { grid-template-columns: 1fr 1fr; }
+  .pf-grid-portraits { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .pf-hero { grid-template-columns: 1fr; min-height: auto; }
+  .pf-hero-right {
+    height: 65vw;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    order: -1;
+  }
+  .pf-hero-img.tall { grid-row: 1 / 3; }
+  .pf-hero-left {
+    padding: 52px 28px 60px;
+    order: 1;
+  }
+  .pf-hero-left::before { display: none; }
+  .pf-scroll-hint { display: none; }
+  .pf-hero-title { font-size: clamp(3rem, 9vw, 5rem); }
+  .pf-hero-meta { gap: 24px; }
+  .pf-meta-num { font-size: 1.5rem; }
+
+  .pf-section-header { padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .pf-section-desc { text-align: left; max-width: none; }
+  .pf-section-num { font-size: 4rem; }
+
+  .pf-grid-weddings,
+  .pf-grid-prewedding,
+  .pf-grid-portraits,
+  .pf-grid-family,
+  .pf-grid-events { padding: 0 16px; }
+
+  .pf-grid-weddings { grid-template-columns: 1fr; }
+  .pf-grid-weddings .pf-img-main { grid-row: auto; aspect-ratio: 4/3; }
+  .pf-grid-weddings .pf-img-side { aspect-ratio: 4/3; }
+
+  .pf-grid-prewedding { grid-template-columns: 1fr 1fr; }
+  .pf-grid-prewedding .pf-img-wide { grid-column: 1 / 3; }
+  .pf-grid-prewedding .pf-img-tall { grid-column: auto; grid-row: auto; min-height: 240px; }
+  .pf-grid-prewedding .pf-img-sq { grid-column: auto; aspect-ratio: auto; }
+
+  .pf-grid-portraits { grid-template-columns: 1fr 1fr; }
+  .pf-grid-family { grid-template-columns: 1fr 1fr; }
+  .pf-grid-events { grid-template-columns: 1fr 1fr; }
+  .pf-grid-events .pf-img-ev.hero { grid-row: auto; }
+
+  .pf-category-section { padding: 60px 0; }
+
+  .pf-story-card { padding: 0 16px; }
+  .pf-story-inner { grid-template-columns: 1fr; }
+  .pf-story-img { aspect-ratio: 16/9; }
+  .pf-story-text { padding: 32px 28px; }
+  .pf-story-quote { font-size: 1.2rem; }
+
+  .pf-ba-section { padding: 0 16px; margin: 60px auto; }
+  .pf-ba-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .pf-ba-desc { text-align: left; }
+
+  .pf-footer-grid { grid-template-columns: 1fr; padding: 0 20px 40px; }
+  .pf-footer-col:nth-child(3),
+  .pf-footer-col:nth-child(4) { display: none; }
+  .pf-footer-bottom { padding: 20px; }
+
+  .pf-closing { padding: 80px 0; }
+  .pf-closing-inner { padding: 0 24px; }
+  .pf-closing-quote { font-size: 1.3rem; }
+
+  .nav-toggle { display: flex; }
+  .main-nav {
+    position: fixed; top: 0; right: -100%;
+    width: 82%; max-width: 360px; height: 100vh;
+    background: linear-gradient(160deg, #1a2d22 0%, #0f1e17 60%, #0a1510 100%);
+    flex-direction: column; align-items: flex-start; justify-content: center;
+    gap: 28px; padding: 60px 40px;
+    transition: right 0.55s cubic-bezier(0.22,1,0.36,1);
+    z-index: 1001;
+  }
+  .main-nav.open { right: 0; box-shadow: -20px 0 60px rgba(0,0,0,0.4); }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .main-nav a { font-size: 1.2rem; font-family: var(--font-display); color: rgba(247,243,234,0.8); border-bottom: 1px solid rgba(247,243,234,0.07); padding: 14px 0; width: 100%; text-transform: none; letter-spacing: 0.02em; }
+  .main-nav a.nav-cta { background: var(--gold); color: var(--forest) !important; padding: 14px 24px; text-align: center; border-bottom: none; font-family: var(--font-body); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.16em; }
+  .main-nav a::after { display: none; }
+}
+
+@media (max-width: 560px) {
+  .pf-hero-right { height: 80vw; }
+  .pf-cat-nav-inner { padding: 0 16px; }
+  .pf-grid-family { grid-template-columns: 1fr; }
+  .pf-closing-btns { flex-direction: column; }
+  .btn-pf-gold, .btn-pf-outline { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .pf-recognition-inner { animation: none; }
+}
+</style>
 </head>
-<body>
 
-<!-- ================= PRELOADER ================= -->
+<body class="portfolio-body">
+
+<!-- PRELOADER -->
 <div class="preloader" id="preloader">
-
-  <!-- Ambient background glow -->
   <div class="pl-glow pl-glow-1"></div>
   <div class="pl-glow pl-glow-2"></div>
-
-  <!-- Shutter / aperture ring -->
   <div class="pl-aperture">
     <div class="pl-aperture-ring"></div>
     <div class="pl-aperture-ring pl-aperture-ring-2"></div>
@@ -64,92 +1137,30 @@
       <span></span><span></span><span></span>
     </div>
   </div>
-
-  <!-- Corner frame brackets -->
   <div class="pl-frame">
     <span class="pl-corner pl-tl"></span>
     <span class="pl-corner pl-tr"></span>
     <span class="pl-corner pl-bl"></span>
     <span class="pl-corner pl-br"></span>
   </div>
-
-  <!-- Center content -->
   <div class="pl-content">
     <div class="pl-logo-mark">AS</div>
     <div class="pl-divider"></div>
     <div class="pl-studio-name">ARUN SAREEN</div>
     <div class="pl-tagline">Photography &amp; Videography</div>
   </div>
-
-  <!-- Bottom progress bar -->
   <div class="pl-progress-wrap">
     <div class="pl-progress-bar" id="plProgressBar"></div>
   </div>
-
-  <!-- Film strip bottom -->
   <div class="pl-film-strip">
     <span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span>
   </div>
-
 </div>
 
-<!-- ================= INQUIRY POPUP MODAL ================= -->
-<div class="inquiry-modal" id="inquiryModal">
-  <div class="inquiry-overlay" id="inquiryOverlay"></div>
-  <div class="inquiry-box">
-    <button class="inquiry-close" id="inquiryClose" aria-label="Close inquiry form">&times;</button>
-    <div class="inquiry-media">
-      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=900&auto=format&fit=crop" alt="Wedding ceremony moment">
-      <div class="inquiry-media-overlay"></div>
-      <div class="inquiry-media-text">
-        <p class="eyebrow">Arun Sareen Photography</p>
-        <h3>Let's Capture Your Story</h3>
-        <p>Quick inquiry, fast reply — we'll get back to you within 24 hours.</p>
-      </div>
-    </div>
-    <div class="inquiry-form-side">
-      <h3>Quick Inquiry</h3>
-      <form class="contact-form" id="popupForm" action="https://formspree.io/f/mqevawjj" method="POST">
-        <input type="hidden" name="_subject" value="New Booking Inquiry — Arun Sareen Photography (Popup)">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-group">
-          <label for="pfname">Full Name</label>
-          <input type="text" id="pfname" name="fname" required placeholder="Your name">
-        </div>
-        <div class="form-group">
-          <label for="pfphone">Phone or WhatsApp</label>
-          <input type="tel" id="pfphone" name="fphone" required placeholder="+91 00000 00000">
-        </div>
-        <div class="form-group">
-          <label for="pfservice">I'm Interested In</label>
-          <select id="pfservice" name="fservice">
-            <option>Wedding Photography</option>
-            <option>Pre-Wedding Photography</option>
-            <option>Engagement Shoot</option>
-            <option>Bridal Portraits</option>
-            <option>Family Photography</option>
-            <option>Baby &amp; Maternity Photography</option>
-            <option>Event Photography</option>
-            <option>Corporate Photography</option>
-            <option>Brand &amp; Product Photography</option>
-            <option>Commercial Photography</option>
-            <option>Videography &amp; Cinematic Films</option>
-            <option>Photo Editing &amp; Retouching</option>
-            <option>Other / Not Sure</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-gold full-width">Send Inquiry</button>
-        <p class="form-success" id="popupFormSuccess">Thank you! We'll be in touch within 24 hours.</p>
-      </form>
-      <button class="inquiry-skip" id="inquirySkip">Maybe later, just let me browse</button>
-    </div>
-  </div>
-</div>
-
-<!-- ================= HEADER / NAV ================= -->
+<!-- HEADER / NAV -->
 <header class="site-header" id="siteHeader">
   <div class="nav-wrap">
     <a href="index.html" class="logo">
@@ -168,203 +1179,512 @@
     </button>
   </div>
 </header>
-
 <div class="nav-overlay" id="navOverlay"></div>
 
-<!-- ================= PAGE HERO ================= -->
-<section class="page-hero">
-  <div class="page-hero-media">
-    <img src="images/hero-background 1.jpg" alt="Bridal portrait with traditional jewelry">
-    <div class="page-hero-overlay"></div>
-    <div class="grain"></div>
+<!-- =========================================================
+     EDITORIAL HERO — split layout, no gradient overlay
+     ========================================================= -->
+<section class="pf-hero">
+
+  <div class="pf-hero-left">
+    <div class="pf-hero-eyebrow" data-reveal>Selected Work · 2000+ Shoots</div>
+    <h1 class="pf-hero-title" data-reveal>
+      The<br>
+      <em>Portfolio</em><br>
+      Collection
+    </h1>
+    <div class="pf-hero-meta" data-reveal>
+      <div class="pf-meta-item">
+        <span class="pf-meta-num">180+</span>
+        <span class="pf-meta-label">Weddings</span>
+      </div>
+      <div class="pf-meta-item">
+        <span class="pf-meta-num">50+</span>
+        <span class="pf-meta-label">Brand Campaigns</span>
+      </div>
+      <div class="pf-meta-item">
+        <span class="pf-meta-num">12</span>
+        <span class="pf-meta-label">Cities</span>
+      </div>
+      <div class="pf-meta-item">
+        <span class="pf-meta-num">30+</span>
+        <span class="pf-meta-label">Years</span>
+      </div>
+    </div>
+    <div class="pf-scroll-hint">Scroll to explore</div>
   </div>
-  <div class="page-hero-content">
-    <p class="eyebrow" data-aos>Selected Work</p>
-    <h1 data-aos>Portfolio<br><span class="italic">&amp; Gallery</span></h1>
-    <p class="page-hero-sub" data-aos>A complete look at the weddings, portraits, brand campaigns and films we've had the privilege to create.</p>
+
+  <div class="pf-hero-right">
+    <div class="pf-hero-img tall">
+      <img src="images/p1.webp" alt="Bridal portrait in gold light" loading="eager">
+    </div>
+    <div class="pf-hero-img">
+      <img src="images/p2.webp" alt="Wedding ceremony moment" loading="eager">
+    </div>
+    <div class="pf-hero-img">
+      <img src="images/p4.webp" alt="Pre-wedding couple outdoors" loading="eager">
+    </div>
   </div>
+
 </section>
 
-<!-- ================= PORTFOLIO STATS ================= -->
-<section class="stats-strip">
-  <div class="container stats-grid">
-    <div class="stat-item" data-aos>
-      <span class="stat-num">2000+</span>
-      <span class="stat-label">Shoots Delivered</span>
+<!-- RECOGNITION STRIP -->
+<div class="pf-recognition" aria-hidden="true">
+  <div class="pf-recognition-inner">
+    <span class="pf-recog-item"><i class="fa-solid fa-award"></i> 30+ Years of Storytelling</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-star"></i> 4.9 / 5 Rating · 500+ Reviews</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-plane"></i> Destination Weddings Worldwide</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-camera-retro"></i> 2000+ Shoots Delivered</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-film"></i> Cinematic Films Included</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-map-location-dot"></i> Goa · Jaipur · Udaipur · Delhi · Mumbai ·</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="pf-recog-item"><i class="fa-solid fa-award"></i> 30+ Years of Storytelling</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-star"></i> 4.9 / 5 Rating · 500+ Reviews</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-plane"></i> Destination Weddings Worldwide</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-camera-retro"></i> 2000+ Shoots Delivered</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-film"></i> Cinematic Films Included</span>
+    <span class="pf-recog-item"><i class="fa-solid fa-map-location-dot"></i> Goa · Jaipur · Udaipur · Delhi · Mumbai ·</span>
+  </div>
+</div>
+
+<!-- CATEGORY NAVIGATION -->
+<nav class="pf-cat-nav" id="pfCatNav" aria-label="Portfolio categories">
+  <div class="pf-cat-nav-inner">
+    <button class="pf-cat-btn active" data-target="weddings">Weddings <span class="cat-count">04</span></button>
+    <button class="pf-cat-btn" data-target="prewedding">Pre-Wedding <span class="cat-count">03</span></button>
+    <button class="pf-cat-btn" data-target="portraits">Portraits <span class="cat-count">04</span></button>
+    <button class="pf-cat-btn" data-target="family">Family &amp; Baby <span class="cat-count">03</span></button>
+    <button class="pf-cat-btn" data-target="editing">Editing</button>
+  </div>
+</nav>
+
+<!-- =========================================================
+     SECTION 01 — WEDDINGS
+     Layout: 1 tall hero image + 2 smaller on right
+     ========================================================= -->
+<section class="pf-category-section" id="sec-weddings">
+  <div class="pf-section-header">
+    <div class="pf-section-label">
+      <span class="pf-section-num" aria-hidden="true">01</span>
+      <div class="pf-section-title-group">
+        <div class="pf-section-eyebrow">The Collection</div>
+        <h2 class="pf-section-name">Wedding<br><em>Photography</em></h2>
+      </div>
     </div>
-    <div class="stat-item" data-aos>
-      <span class="stat-num">180+</span>
-      <span class="stat-label">Weddings Captured</span>
+    <p class="pf-section-desc">"Candid emotion meets<br>cinematic polish — every<br>frame built to last a lifetime."</p>
+  </div>
+
+  <div class="pf-grid-weddings" data-reveal>
+    <div class="pf-img-item pf-img-main" data-img="images/p2.webp" data-tag="Wedding" data-title="The Ceremony">
+      <img src="images/p2.webp" alt="Wedding ceremony moment" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Wedding</span>
+        <span class="pf-img-caption-title">The Ceremony</span>
+      </div>
     </div>
-    <div class="stat-item" data-aos>
-      <span class="stat-num">50+</span>
-      <span class="stat-label">Brand Campaigns</span>
+    <div class="pf-img-item pf-img-side" data-img="images/p9.webp" data-tag="Wedding" data-title="First Dance, Jaipur">
+      <img src="images/insta-feed 8.webp" alt="First dance at reception" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Wedding</span>
+        <span class="pf-img-caption-title">First Dance, Jaipur</span>
+      </div>
     </div>
-    <div class="stat-item" data-aos>
-      <span class="stat-num">10+</span>
-      <span class="stat-label">Cities Shot In</span>
+    <div class="pf-img-item pf-img-side" data-img="images/insta-feed 1.webp" data-tag="Wedding" data-title="Golden Hour, Goa">
+      <img src="images/insta-feed 1.webp" alt="Bride and groom at golden hour" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Wedding</span>
+        <span class="pf-img-caption-title">Golden Hour, Goa</span>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- ================= FULL GALLERY ================= -->
-<section class="portfolio portfolio-page">
-  <div class="container">
-    <p class="eyebrow center" data-aos>Browse By Category</p>
-    <h2 class="section-title center" data-aos>The Full Collection</h2>
-    <p class="section-sub center" data-aos>Filter by category to explore the work most relevant to your project, or browse it all.</p>
-
-    <div class="filter-bar" data-aos>
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="wedding">Weddings</button>
-      <button class="filter-btn" data-filter="prewedding">Pre-Wedding</button>
-      <button class="filter-btn" data-filter="portrait">Portraits</button>
-      <button class="filter-btn" data-filter="family">Family &amp; Baby</button>
-      <button class="filter-btn" data-filter="event">Events</button>
-    </div>
-
-    <div class="gallery-grid" id="galleryGrid">
-      <figure class="gallery-item" data-cat="wedding">
-        <img src="images/p2.webp" loading="lazy" alt="Wedding ceremony moment">
-      </figure>
-      <figure class="gallery-item" data-cat="prewedding">
-        <img src="images/p4.webp" loading="lazy" alt="Pre-wedding couple shoot outdoors">
-      </figure>
-      <figure class="gallery-item" data-cat="portrait">
-        <img src="images/p1.webp" loading="lazy" alt="Bridal portrait with jewelry detail">
-      </figure>
-      <figure class="gallery-item" data-cat="family">
-        <img src="images/p4.webp" loading="lazy" alt="Family portrait session">
-      </figure>
-      <figure class="gallery-item" data-cat="family">
-        <img src="images/p3.webp" loading="lazy" alt="Maternity photography session">
-      </figure>
-      <figure class="gallery-item" data-cat="event">
-        <img src="images/p12.webp" loading="lazy" alt="Corporate event photography">
-      </figure>
-      <figure class="gallery-item" data-cat="brand">
-        <img src="images/p6.webp" loading="lazy" alt="Product photography flatlay">
-      </figure>
-      <figure class="gallery-item" data-cat="wedding">
-        <img src="images/p7.webp" loading="lazy" alt="Wedding reception dance floor">
-      </figure>
-      <figure class="gallery-item" data-cat="prewedding">
-        <img src="images/p9.webp" loading="lazy" alt="Engagement shoot couple laughing">
-      </figure>
-      <figure class="gallery-item" data-cat="brand">
-        <img src="images/p10.webp" loading="lazy" alt="Brand photography for fashion label">
-      </figure>
-      <figure class="gallery-item" data-cat="portrait">
-        <img src="images/p8.webp" loading="lazy" alt="Groom portrait in traditional attire">
-      </figure>
-      <figure class="gallery-item" data-cat="event">
-        <img src="images/p11.webp" loading="lazy" alt="Live event coverage with crowd">
-      </figure>
-      <figure class="gallery-item" data-cat="wedding">
-        <img src="images/insta-feed 1.webp" loading="lazy" alt="Bride and groom embracing at golden hour">
-      </figure>
-      <figure class="gallery-item" data-cat="portrait">
-        <img src="images/insta-feed 2.webp" loading="lazy" alt="Couple portrait laughing together">
-      </figure>
-      <figure class="gallery-item" data-cat="family">
-        <img src="images/insta-feed 3.webp" loading="lazy" alt="Baby photography session">
-
-      </figure>
-      <figure class="gallery-item" data-cat="brand">
-        <img src="images/about image.webp" loading="lazy" alt="Product photography setup with brand items">
-
-      </figure>
-      <figure class="gallery-item" data-cat="event">
-        <img src="images/insta-feed 4.webp" loading="lazy" alt="Corporate conference event coverage">
-
-      </figure>
-      <figure class="gallery-item" data-cat="event">
-        <img src="images/insta-feed 5.webp" loading="lazy" alt="Corporate conference event coverage">
-
-      </figure>
-      <figure class="gallery-item" data-cat="event">
-        <img src="images/insta-feed 6.webp" loading="lazy" alt="Corporate conference event coverage">
-      </figure>
-      <figure class="gallery-item" data-cat="event">
-        <img src="images/insta-feed 7.webp" loading="lazy" alt="Corporate conference event coverage">
-
-      </figure>
-    </div>
-
-    <!-- BEFORE / AFTER -->
-    <div class="before-after-section">
-      <p class="eyebrow center" data-aos>The Finishing Touch</p>
-      <h3 class="center" data-aos>Before &amp; After — Editing &amp; Retouching</h3>
-      <div class="ba-slider" data-aos>
-        <div class="ba-wrap" id="baWrap">
-          <img src="images/before edit.webp" loading="lazy" alt="Before color grading and retouching" class="ba-img ba-before">
-          <img src="images/after edit.webp" loading="lazy" alt="After color grading and retouching" class="ba-img ba-after">
-          <div class="ba-divider" id="baDivider"><span><i class="fa-solid fa-arrows-left-right"></i></span></div>
+  <!-- Featured story card -->
+  <div class="pf-story-card" data-reveal>
+    <div class="pf-story-inner">
+      <div class="pf-story-img">
+        <img src="images/hero-background 1.jpg" alt="Priya and Rohan, Udaipur Wedding" loading="lazy">
+      </div>
+      <div class="pf-story-text">
+        <div class="pf-story-tag">Client Story · Weddings</div>
+        <blockquote class="pf-story-quote">
+          "Arun and his team made our wedding feel effortless. Every emotional moment was captured without us even noticing the camera."
+        </blockquote>
+        <div class="pf-story-attr">
+          <span class="pf-story-client">Priya &amp; Rohan</span>
+          <span class="pf-story-detail">Wedding · Udaipur · Lake Pichola</span>
         </div>
-        <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-range" aria-label="Drag to compare before and after">
-        <div class="ba-labels"><span>Before</span><span>After</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CTA BANNER ================= -->
-<section class="about-cta">
-  <div class="container about-cta-inner" data-aos>
-    <h2>Liked What You Saw?</h2>
-    <p>Let's talk about your wedding, portrait session, or brand shoot — we'd love to bring the same care to your story.</p>
-    <div class="hero-actions">
-      <a href="index.html#contact" class="btn btn-gold">Book a Shoot</a>
-      <a href="index.html#services" class="btn btn-outline">View Services</a>
+<!-- =========================================================
+     SECTION 02 — PRE-WEDDING
+     Layout: wide panoramic + tall portrait side
+     ========================================================= -->
+<section class="pf-category-section" id="sec-prewedding">
+  <div class="pf-section-header">
+    <div class="pf-section-label">
+      <span class="pf-section-num" aria-hidden="true">02</span>
+      <div class="pf-section-title-group">
+        <div class="pf-section-eyebrow">The Collection</div>
+        <h2 class="pf-section-name">Pre-Wedding<br><em>&amp; Engagement</em></h2>
+      </div>
+    </div>
+    <p class="pf-section-desc">"Your love story,<br>told before the big day —<br>in frames you'll keep forever."</p>
+  </div>
+
+  <div class="pf-grid-prewedding" data-reveal>
+    <div class="pf-img-item pf-img-wide" data-img="images/p10.webp" data-tag="Engagement" data-title="Rhea & Karan">
+      <img src="images/hero-background 1.jpg" alt="Engagement shoot, couple laughing" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Engagement</span>
+        <span class="pf-img-caption-title">Rhea &amp; Karan</span>
+      </div>
+    </div>
+    <div class="pf-img-item pf-img-tall" data-img="images/p4.webp" data-tag="Pre-Wedding" data-title="Sahil & Meher, Goa">
+      <img src="images/p5.webp" alt="Pre-wedding couple outdoors, Goa" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Pre-Wedding</span>
+        <span class="pf-img-caption-title">Sahil &amp; Meher, Goa</span>
+      </div>
+    </div>
+    <div class="pf-img-item pf-img-sq" data-img="images/insta-feed 4.webp" data-tag="Pre-Wedding" data-title="Golden Hour Couple">
+      <img src="images/insta-feed 4.webp" alt="Golden hour couple shoot" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Pre-Wedding</span>
+        <span class="pf-img-caption-title">Golden Hour</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <div class="footer-bg"></div>
-  <div class="footer-bg-overlay"></div>
-  <div class="container footer-grid" style="position:relative;z-index:2;">
-    <div class="footer-brand">
+<!-- =========================================================
+     SECTION 03 — PORTRAITS
+     Layout: 4-column portrait grid, staggered heights
+     ========================================================= -->
+<section class="pf-category-section" id="sec-portraits">
+  <div class="pf-section-header">
+    <div class="pf-section-label">
+      <span class="pf-section-num" aria-hidden="true">03</span>
+      <div class="pf-section-title-group">
+        <div class="pf-section-eyebrow">The Collection</div>
+        <h2 class="pf-section-name">Bridal<br><em>Portraits</em></h2>
+      </div>
+    </div>
+    <p class="pf-section-desc">"Studio and on-location<br>portraits that celebrate<br>elegance and presence."</p>
+  </div>
+
+  <div class="pf-grid-portraits" data-reveal>
+    <div class="pf-img-item pf-img-port" data-img="images/p1.webp" data-tag="Bridal Portrait" data-title="The Bride in Gold">
+      <img src="images/p1.webp" alt="Bridal portrait with jewelry detail" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Bridal Portrait</span>
+        <span class="pf-img-caption-title">The Bride in Gold</span>
+      </div>
+    </div>
+    <div class="pf-img-item pf-img-port accent" data-img="images/p11.webp" data-tag="Portrait" data-title="The Groom's Moment">
+      <img src="images/p11.webp" alt="Groom portrait in traditional attire" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Portrait</span>
+        <span class="pf-img-caption-title">The Bride's Moment</span>
+      </div>
+    </div>
+    <div class="pf-img-item pf-img-port" data-img="images/insta-feed 2.webp" data-tag="Portrait" data-title="Couple Portrait">
+      <img src="images/p6.webp" alt="Couple portrait laughing together" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Portrait</span>
+        <span class="pf-img-caption-title">Portrait</span>
+      </div>
+    </div>
+    <div class="pf-img-item pf-img-port accent" data-img="images/insta-feed 7.webp" data-tag="Bridal" data-title="Veil &amp; Light">
+      <img src="images/p7.webp" alt="Bridal veil portrait" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Bridal</span>
+        <span class="pf-img-caption-title">Veil &amp; Light</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 04 — FAMILY & BABY
+     Layout: editorial 3-column with center dominant
+     ========================================================= -->
+<section class="pf-category-section" id="sec-family">
+  <div class="pf-section-header">
+    <div class="pf-section-label">
+      <span class="pf-section-num" aria-hidden="true">04</span>
+      <div class="pf-section-title-group">
+        <div class="pf-section-eyebrow">The Collection</div>
+        <h2 class="pf-section-name">Family<br><em>&amp; Maternity</em></h2>
+      </div>
+    </div>
+    <p class="pf-section-desc">"Warm, natural sessions<br>that capture the joy and<br>bond of your family."</p>
+  </div>
+
+  <div class="pf-grid-family" data-reveal>
+    <div class="pf-img-item pf-img-fam" data-img="images/p3.webp" data-tag="Family" data-title="The Mehta Family">
+      <img src="images/p3.webp" alt="Family portrait session" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Family</span>
+        <span class="pf-img-caption-title">The Mehta Family</span>
+      </div>
+    </div>
+    <div class="pf-img-item pf-img-fam center" data-img="images/p12.webp" data-tag="Maternity" data-title="Awaiting Aarav">
+      <img src="images/p12.webp" alt="Maternity photography session" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Maternity</span>
+        <span class="pf-img-caption-title">Awaiting Aarav</span>
+      </div>
+    </div>
+    <div class="pf-img-item pf-img-fam" data-img="images/insta-feed 3.webp" data-tag="Baby" data-title="Newborn Session">
+      <img src="images/p4.webp" alt="Baby photography session" loading="lazy">
+      <div class="pf-img-caption">
+        <span class="pf-img-caption-tag">Baby</span>
+        <span class="pf-img-caption-title">Newborn Session</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story card -->
+  <div class="pf-story-card" data-reveal>
+    <div class="pf-story-inner">
+      <div class="pf-story-img">
+        <img src="images/insta-feed 6.webp" alt="Neha and Vikram maternity session" loading="lazy">
+      </div>
+      <div class="pf-story-text">
+        <div class="pf-story-tag">Client Story · Maternity</div>
+        <blockquote class="pf-story-quote">
+          "Our maternity shoot was so comfortable and fun — the photos are now framed across our home. Arun has such a calming presence behind the camera."
+        </blockquote>
+        <div class="pf-story-attr">
+          <span class="pf-story-client">Neha &amp; Vikram</span>
+          <span class="pf-story-detail">Maternity Session · New Delhi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     BEFORE / AFTER — EDITING
+     ========================================================= -->
+<div class="pf-ba-section" id="sec-editing">
+  <div class="pf-ba-header" data-reveal>
+    <div class="pf-ba-title-group">
+      <div class="pf-ba-eyebrow">The Finishing Touch</div>
+      <h2 class="pf-ba-title">Before &amp; After —<br><em style="font-family: var(--font-display); font-style: italic; color: rgba(247,243,234,0.45);">Editing &amp; Retouching</em></h2>
+    </div>
+    <p class="pf-ba-desc">Every image is hand-edited for colour, light and tone — no batch processing, ever.</p>
+  </div>
+  <div class="ba-wrap" id="baWrap" data-reveal>
+    <img src="images/before edit.webp" loading="lazy" alt="Before colour grading" class="ba-img ba-before">
+    <img src="images/after edit.webp" loading="lazy" alt="After colour grading" class="ba-img ba-after">
+    <div class="ba-divider" id="baDivider"><span><i class="fa-solid fa-arrows-left-right"></i></span></div>
+  </div>
+  <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-range" aria-label="Drag to compare before and after editing">
+  <div class="ba-labels"><span>Before</span><span>After</span></div>
+</div>
+
+<!-- =========================================================
+     CLOSING CTA
+     ========================================================= -->
+<section class="pf-closing">
+  <div class="pf-closing-inner">
+    <blockquote class="pf-closing-quote" data-reveal>
+      "Flying the team out to Goa for our wedding was the best decision we made. They captured details we didn't even know were happening."
+    </blockquote>
+    <p class="pf-closing-attribution" data-reveal>— Aman Kumar &nbsp;·&nbsp; Destination Wedding, Goa</p>
+    <div class="pf-closing-divider"></div>
+    <p class="pf-closing-cta-text" data-reveal>Ready to tell your story?</p>
+    <div class="pf-closing-btns" data-reveal>
+      <a href="index.html#contact" class="btn-pf-gold">Book a Shoot</a>
+      <a href="index.html#services" class="btn-pf-outline">View Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pf-footer">
+  <div class="pf-footer-grid">
+    <div class="pf-footer-brand">
       <a href="index.html" class="logo">
         <span class="logo-mark">AS</span>
         <span class="logo-text">Arun Sareen <em>Photography</em></span>
       </a>
       <p>Full-service photography &amp; videography studio for weddings, brands, events and life's most special moments. Available for local and destination shoots.</p>
     </div>
-    <div class="footer-col">
+    <div class="pf-footer-col">
       <h4>Explore</h4>
       <a href="about.html">About the Studio</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="index.html#services">Services</a>
       <a href="index.html#testimonials">Testimonials</a>
     </div>
-    <div class="footer-col">
+    <div class="pf-footer-col">
       <h4>Services</h4>
       <a href="index.html#services">Wedding &amp; Pre-Wedding</a>
       <a href="index.html#services">Family &amp; Maternity</a>
       <a href="index.html#services">Event &amp; Corporate</a>
-      <a href="index.html#services">Brand &amp; Product</a>
       <a href="index.html#services">Videography &amp; Editing</a>
     </div>
-    <div class="footer-col">
+    <div class="pf-footer-col">
       <h4>Get in Touch</h4>
-      <a href="index.html#contact"><i class="fa-solid fa-location-dot"></i>  K-4/14-15 Mohan gargen ,Uttam nagar New delhi</a>
+      <a href="index.html#contact"><i class="fa-solid fa-location-dot"></i> K-4/14-15 Mohan Gargen, New Delhi</a>
       <a href="tel:+918587862476"><i class="fa-solid fa-phone"></i> +91 85878 62476</a>
       <a href="mailto:rajni.bakshi78@gmail.com"><i class="fa-solid fa-envelope"></i> rajni.bakshi78@gmail.com</a>
     </div>
   </div>
-  <div class="footer-bottom" style="position:relative;z-index:2;">
+  <div class="pf-footer-bottom">
     <p>&copy; 2026 Arun Sareen Photography. All rights reserved.</p>
-    <div class="footer-legal"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a></div>
+    <div class="pf-footer-legal">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </div>
   </div>
 </footer>
 
-<!-- ================= FLOATING WHATSAPP ================= -->
+<!-- WHATSAPP -->
 <a href="https://wa.me/918587862476?text=Hi%20Arun%20Sareen%20Photography%2C%20I'd%20like%20to%20enquire%20about%20a%20shoot." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
-<script src="script.js"></script>
+<!-- LIGHTBOX -->
+<div class="pf-lightbox" id="pfLightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+  <button class="pf-lb-close" id="pfLbClose" aria-label="Close lightbox">&times;</button>
+  <img id="pfLbImg" src="" alt="">
+  <div class="pf-lb-caption">
+    <span class="pf-lb-caption-tag" id="pfLbTag"></span>
+    <span class="pf-lb-caption-name" id="pfLbTitle"></span>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* --- PRELOADER --- */
+  const preloader = document.getElementById('preloader');
+  window.addEventListener('load', () => setTimeout(() => preloader.classList.add('hidden'), 400));
+  setTimeout(() => preloader.classList.add('hidden'), 1800);
+
+  /* --- HEADER SCROLL --- */
+  const header = document.getElementById('siteHeader');
+  let raf = false;
+  window.addEventListener('scroll', () => {
+    if (!raf) { raf = true; requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 60); raf = false; }); }
+  });
+
+  /* --- MOBILE NAV --- */
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  const navOverlay = document.getElementById('navOverlay');
+  if (navToggle && mainNav) {
+    const closeNav = () => {
+      navToggle.classList.remove('open');
+      mainNav.classList.remove('open');
+      navOverlay && navOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    };
+    navToggle.addEventListener('click', () => {
+      const opening = !mainNav.classList.contains('open');
+      navToggle.classList.toggle('open');
+      mainNav.classList.toggle('open');
+      navOverlay && navOverlay.classList.toggle('show');
+      document.body.style.overflow = opening ? 'hidden' : '';
+    });
+    mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+    navOverlay && navOverlay.addEventListener('click', closeNav);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+  }
+
+  /* --- SCROLL REVEAL --- */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  /* --- CATEGORY NAV — smooth scroll to section --- */
+  const catBtns = document.querySelectorAll('.pf-cat-btn');
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById('sec-' + btn.dataset.target);
+      if (target) {
+        const offset = 120;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* Update active cat on scroll */
+  const sections = [
+    { id: 'sec-weddings', cat: 'weddings' },
+    { id: 'sec-prewedding', cat: 'prewedding' },
+    { id: 'sec-portraits', cat: 'portraits' },
+    { id: 'sec-family', cat: 'family' },
+    { id: 'sec-events', cat: 'events' },
+    { id: 'sec-editing', cat: 'editing' },
+  ];
+  const sectEls = sections.map(s => ({ el: document.getElementById(s.id), cat: s.cat })).filter(s => s.el);
+  window.addEventListener('scroll', () => {
+    let current = 'weddings';
+    sectEls.forEach(({ el, cat }) => {
+      if (window.scrollY >= el.offsetTop - 200) current = cat;
+    });
+    catBtns.forEach(b => b.classList.toggle('active', b.dataset.target === current));
+  }, { passive: true });
+
+  /* --- BEFORE / AFTER --- */
+  const baSlider = document.getElementById('baSlider');
+  const baAfter = document.querySelector('.ba-after');
+  const baDivider = document.getElementById('baDivider');
+  if (baSlider && baAfter) {
+    const updateBA = v => {
+      baAfter.style.clipPath = `inset(0 ${100 - v}% 0 0)`;
+      if (baDivider) baDivider.style.left = v + '%';
+    };
+    updateBA(50);
+    baSlider.addEventListener('input', e => updateBA(e.target.value));
+  }
+
+  /* --- LIGHTBOX --- */
+  const lightbox = document.getElementById('pfLightbox');
+  const lbImg = document.getElementById('pfLbImg');
+  const lbTag = document.getElementById('pfLbTag');
+  const lbTitle = document.getElementById('pfLbTitle');
+  const lbClose = document.getElementById('pfLbClose');
+
+  const openLightbox = (src, tag, title) => {
+    lbImg.src = src;
+    lbTag.textContent = tag;
+    lbTitle.textContent = title;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { lbImg.src = ''; }, 400);
+  };
+
+  document.querySelectorAll('.pf-img-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const src = item.dataset.img;
+      const tag = item.dataset.tag || '';
+      const title = item.dataset.title || '';
+      if (src) openLightbox(src, tag, title);
+    });
+  });
+
+  lbClose && lbClose.addEventListener('click', closeLightbox);
+  lightbox && lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
+
+});
+</script>
 </body>
 </html>
