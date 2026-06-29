@@ -115,16 +115,17 @@ if (navToggle && mainNav) {
     baSlider.addEventListener('input', (e) => updateBA(e.target.value));
   }
 
-  /* ---------- FAQ ACCORDION ---------- */
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const q = item.querySelector('.faq-q');
-    q.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      faqItems.forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
+  /* ---------- FAQ ACCORDION (legacy design only — skips native <details> FAQs) ---------- */
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+  const q = item.querySelector('.faq-q');
+  if (!q) return;   // <-- add this line
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    faqItems.forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   });
+});
 
   /* ---------- CINEMATIC SHOWREEL ---------- */
   const showreelSection = document.querySelector('.showreel');
@@ -316,36 +317,23 @@ if (instaMarquee) {
   mediaQuery.addEventListener('change', handleBreakpoint);
   handleBreakpoint(mediaQuery);
 }
-/* ---------- PORTFOLIO MOBILE LIMIT ---------- */
-/* ---------- PORTFOLIO MOBILE LIMIT ---------- */
+/* ---------- PORTFOLIO LIMIT (4 photos, all screen sizes) ---------- */
 const galleryGrid = document.getElementById('galleryGrid');
 const isFullPortfolioPage = !!document.querySelector('.portfolio-page');
 if (galleryGrid && !isFullPortfolioPage) {
-  // Create mobile "View Full Portfolio" button
+  // Create the "View Full Portfolio" button (shown on every screen size now)
   const portfolioMobileBtn = document.createElement('a');
   portfolioMobileBtn.href = 'portfolio.html';
   portfolioMobileBtn.className = 'btn btn-gold portfolio-mobile-btn';
   portfolioMobileBtn.textContent = 'View Full Portfolio';
   galleryGrid.parentElement.insertBefore(portfolioMobileBtn, galleryGrid.nextSibling);
 
-  const applyMobileGallery = (isMobile) => {
-    const allItems = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
-    if (isMobile) {
-      // Show only first 4, hide the rest
-      allItems.forEach((item, i) => {
-        item.style.display = i < 4 ? '' : 'none';
-      });
-      portfolioMobileBtn.style.display = 'inline-flex';
-    } else {
-      // Restore all on desktop
-      allItems.forEach(item => item.style.display = '');
-      portfolioMobileBtn.style.display = 'none';
-    }
-  };
-
-  const galleryMQ = window.matchMedia('(max-width: 860px)');
-  galleryMQ.addEventListener('change', (e) => applyMobileGallery(e.matches));
-  applyMobileGallery(galleryMQ.matches);
+  // Always show only the first 4 items — desktop and mobile alike
+  const allItems = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
+  allItems.forEach((item, i) => {
+    item.style.display = i < 4 ? '' : 'none';
+  });
+  portfolioMobileBtn.style.display = 'inline-flex';
 }
 /* ---------- SERVICES MOBILE SHOW MORE ---------- */
 const servicesGrid = document.querySelector('.services-grid');
